@@ -1,0 +1,32 @@
+{
+	"compilerOptions": {
+		/* Base Options */
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"target": "es2022",
+		"moduleDetection": "force",
+		"isolatedModules": true,
+		"verbatimModuleSyntax": true,
+		/* Strictness */
+		"strict": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitOverride": true,
+		/* If transpiling with TypeScript: */
+		"module": "NodeNext",
+		"outDir": "dist",
+		"sourceMap": true,
+		/* If your code runs in the DOM: */
+		"lib": [
+			"es2022",
+			"dom",
+			"dom.iterable"
+		],
+	},
+	"include": [
+		"./src"
+	],
+	"exclude": [
+		"./node_modules",
+		"./dist"
+	]
+}
