@@ -1,22 +1,11 @@
 import 'dotenv/config';
 
 import { createEnv } from '@t3-oss/env-core';
-import { z } from 'zod';
 
 export const env = createEnv({
     server: {
-        DATABASE_URL: z.string().url(),
-        OPEN_AI_API_KEY: z.string().min(1),
-    },
-
-    /**
-     * The prefix that client-side variables must have. This is enforced both at
-     * a type-level and at runtime.
-     */
-    clientPrefix: 'PUBLIC_',
-
-    client: {
-        PUBLIC_CLERK_PUBLISHABLE_KEY: z.string().min(1),
+        // DATABASE_URL: z.string().url(),
+        // OPEN_AI_API_KEY: z.string().min(1),
     },
 
     /**

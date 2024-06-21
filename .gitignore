@@ -1,4 +1,22 @@
-node_modules
-.DS_Store
-dist
 .env
+.DS_Store
+
+# Build
+dist
+tsconfig.tsbuildinfo
+
+# Logs
+logs
+*.log
+
+#NPM
+npm-debug.log*
+
+**/node_modules/**
+_node_modules
+
+# ENV
+.env*
+.flaskenv*
+!.env.project
+!.env.vault
