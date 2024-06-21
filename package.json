@@ -8,7 +8,8 @@
         "build": "rm -rf dist && pnpm tsc",
         "dev": "pnpm build && node ./dist/index.js",
         "lint": "yarn run eslint src/**/* ",
-        "lint:fix": "yarn run eslint src/**/* --fix"
+        "lint:fix": "yarn run eslint src/**/* --fix",
+        "dotenv-vault": "pnpm dlx dotenv-vault@latest"
     },
     "keywords": [
         "mcdonalds",
