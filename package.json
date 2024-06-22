@@ -10,6 +10,7 @@
         "lint": "pnpm run eslint src/**/* ",
         "lint:fix": "pnpm run eslint src/**/* --fix",
         "test": "jest",
+        "test:coverage": "jest --coverage --silent",
         "dotenv-vault": "pnpm dlx dotenv-vault@latest"
     },
     "keywords": [
