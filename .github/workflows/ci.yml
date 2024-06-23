@@ -1,0 +1,45 @@
+name: Kiowsky CI
+
+on:
+    push:
+    pull_request:
+
+jobs:
+    tests:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+            - name: Use Node.js 20
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: 'pnpm'
+            - name: Install dependencies
+              run: pnpm install
+            - name: Build
+              run: pnpm run build
+            - name: Upload build to GitHub Artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                  name: build-report
+                  path: dist/
+                  if-no-files-found: error
+                  retention-days: 1
+            - name: Lint
+              run: pnpm run lint
+            - name: Format
+              run: pnpm run format
+            - name: Test
+              run: pnpm run test:coverage
+            - name: Upload test coverage to GitHub Artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                  name: coverage-report
+                  path: coverage/clover.xml
+                  if-no-files-found: error
+                  retention-days: 30
+            - name: Audit
+              run: pnpm audit
