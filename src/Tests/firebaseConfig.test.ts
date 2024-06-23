@@ -14,6 +14,7 @@ describe('Firebase Initialization', () => {
     it('initializes Firebase app and analytics without error', () => {
         expect(() => {
             const app = initializeApp(firebaseConfig);
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const analytics = getAnalytics(app);
         }).not.toThrow();
     });
