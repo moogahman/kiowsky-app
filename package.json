@@ -9,6 +9,7 @@
         "dev": "pnpm build && node ./dist/index.js",
         "lint": "pnpm exec eslint src/**/* ",
         "lint:fix": "pnpm exec eslint src/**/* --fix",
+        "format": "pnpm exec prettier src/**/* --write",
         "test": "jest",
         "test:coverage": "jest --coverage --silent",
         "dotenv-vault": "pnpm dlx dotenv-vault@latest"
