@@ -3,7 +3,7 @@
 
 # Build
 dist
-tsconfig.tsbuildinfo
+*.tsbuildinfo
 
 # Logs
 logs
