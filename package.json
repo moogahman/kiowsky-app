@@ -1,45 +1,63 @@
 {
-    "name": "kiosk-frontend",
-    "version": "1.0.0",
-    "description": "",
-    "main": "dist/index.js",
-    "type": "module",
-    "scripts": {
-        "build": "rm -rf dist && pnpm tsc",
-        "dev": "pnpm build && node ./dist/index.js",
-        "lint": "pnpm run eslint src/**/* ",
-        "lint:fix": "pnpm run eslint src/**/* --fix",
-        "test": "jest",
-        "dotenv-vault": "pnpm dlx dotenv-vault@latest"
-    },
-    "keywords": [
-        "mcdonalds",
-        "maccas",
-        "kiosk",
-        "system"
+  "name": "kiosk-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "rm -rf dist && pnpm tsc",
+    "dev": "pnpm build && node ./dist/index.js",
+    "start": "react-scripts start",
+    "lint": "pnpm run eslint src/**/* ",
+    "lint:fix": "pnpm run eslint src/**/* --fix",
+    "test": "jest",
+    "dotenv-vault": "pnpm dlx dotenv-vault@latest"
+  },
+  "keywords": [
+    "mcdonalds",
+    "maccas",
+    "kiosk",
+    "system"
+  ],
+  "author": "moogahman",
+  "license": "GPL-3.0-only",
+  "packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a",
+  "devDependencies": {
+    "@eslint/js": "^9.5.0",
+    "@types/eslint": "^8.56.10",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.14.6",
+    "@types/react": "^18.3.3",
+    "eslint": "8.x",
+    "eslint-plugin-react": "^7.34.3",
+    "globals": "^15.6.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.3.2",
+    "ts-jest": "^29.1.5",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.13.1"
+  },
+  "dependencies": {
+    "@t3-oss/env-core": "^0.10.1",
+    "dotenv": "^16.4.5",
+    "firebase": "^10.12.2",
+    "zod": "^3.23.8",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ],
-    "author": "moogahman",
-    "license": "GPL-3.0-only",
-    "packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a",
-    "devDependencies": {
-        "@eslint/js": "^9.5.0",
-        "@types/eslint": "^8.56.10",
-        "@types/jest": "^29.5.12",
-        "@types/node": "^20.14.6",
-        "@types/react": "^18.3.3",
-        "eslint": "8.x",
-        "eslint-plugin-react": "^7.34.3",
-        "globals": "^15.6.0",
-        "jest": "^29.7.0",
-        "prettier": "^3.3.2",
-        "ts-jest": "^29.1.5",
-        "typescript": "^5.4.5",
-        "typescript-eslint": "^7.13.1"
-    },
-    "dependencies": {
-        "@t3-oss/env-core": "^0.10.1",
-        "dotenv": "^16.4.5",
-        "firebase": "^10.12.2",
-        "zod": "^3.23.8"
-    }
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

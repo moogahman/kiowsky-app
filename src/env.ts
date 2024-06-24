@@ -1,6 +1,6 @@
 import 'dotenv/config';
 
-import { createEnv } from '@t3-oss/env-core';
+const { createEnv } = require('@t3-oss/env-core');
 
 export const env = createEnv({
     server: {

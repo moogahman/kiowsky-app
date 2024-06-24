@@ -9,12 +9,12 @@
         "strict": true,
         "noUncheckedIndexedAccess": true,
         "noImplicitOverride": true,
-        "module": "NodeNext",
-        "target": "es2022",
-        "moduleResolution": "nodenext",
+        "module": "esnext",
+        "moduleResolution": "node",
         "outDir": "dist",
         "sourceMap": true,
-        "lib": ["es2022", "dom", "dom.iterable"]
+        "lib": ["es2022", "dom", "dom.iterable"],
+        "jsx": "react-jsx"
     },
     "include": ["./src", "jest.config.mjs"],
     "exclude": ["./node_modules", "./dist"]
