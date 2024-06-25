@@ -10,8 +10,8 @@
         "lint": "pnpm exec eslint src/**/* ",
         "lint:fix": "pnpm exec eslint src/**/* --fix",
         "format": "pnpm exec prettier src/**/* --write",
-        "test": "jest",
-        "test:coverage": "jest --coverage --silent",
+        "test": "vitest",
+        "test:coverage": "vitest run --coverage",
         "dotenv-vault": "pnpm dlx dotenv-vault@latest"
     },
     "keywords": [
@@ -28,11 +28,14 @@
         "@types/eslint": "^8.56.10",
         "@types/node": "^20.14.6",
         "@types/react": "^18.3.3",
+        "@vitest/coverage-v8": "^1.6.0",
         "eslint": "8.x",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-react": "^7.34.3",
         "globals": "^15.6.0",
+        "jsdom": "^24.1.0",
         "prettier": "^3.3.2",
+        "ts-node": "^10.9.2",
         "typescript": "^5.4.5",
         "typescript-eslint": "^7.13.1",
         "vitest": "^1.6.0"
