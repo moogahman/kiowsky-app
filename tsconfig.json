@@ -21,8 +21,7 @@
 	},
 	"include": [
 		"./src",
-		"jest.config.mjs",
-		"__tests__/firebaseConfig.test.ts"
+		"__tests__/"
 	],
 	"exclude": [
 		"./node_modules",
