@@ -1,14 +1,15 @@
-jest.mock('firebase/app', () => ({
-    initializeApp: jest.fn().mockReturnValue({}),
-}));
-
-jest.mock('firebase/analytics', () => ({
-    getAnalytics: jest.fn(),
-}));
-
 import { getAnalytics } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '../firebaseConfig.js';
+import { describe, expect, it, vi } from 'vitest';
+import { firebaseConfig } from '../src/firebaseConfig.js';
+
+vi.mock('firebase/app', () => ({
+    initializeApp: vi.fn().mockReturnValue({}),
+}));
+
+vi.mock('firebase/analytics', () => ({
+    getAnalytics: vi.fn(),
+}));
 
 describe('Firebase Initialization', () => {
     it('initializes Firebase app and analytics without error', () => {
