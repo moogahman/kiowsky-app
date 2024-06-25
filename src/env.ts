@@ -5,6 +5,9 @@ import { z } from 'zod';
 
 export const env = createEnv({
     server: {
+        // Test
+        HELLO: z.string().regex(/\bdevelopment\b/),
+
         FIREBASE_API_KEY: z.string(),
         FIREBASE_AUTH_DOMAIN: z.string(),
         FIREBASE_PROJECT_ID: z.string(),
