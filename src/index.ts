@@ -1,5 +1,4 @@
-import dotenv from 'dotenv';
-dotenv.config();
-const HELLO = process.env.HELLO;
+import { env } from './env.js';
 
+const HELLO = env.HELLO;
 console.log(HELLO);
