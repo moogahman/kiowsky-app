@@ -1,21 +1,31 @@
 {
-    "compilerOptions": {
-        /* Base Options */
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "target": "es2022",
-        "isolatedModules": true,
-        /* Strictness */
-        "strict": true,
-        "noUncheckedIndexedAccess": true,
-        "noImplicitOverride": true,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "outDir": "dist",
-        "sourceMap": true,
-        "lib": ["es2022", "dom", "dom.iterable"],
-        "jsx": "react-jsx"
-    },
-    "include": ["./src", "jest.config.mjs"],
-    "exclude": ["./node_modules", "./dist"]
+	"compilerOptions": {
+		/* Base Options */
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"target": "es2022",
+		"isolatedModules": true,
+		/* Strictness */
+		"strict": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitOverride": true,
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"outDir": "dist",
+		"sourceMap": true,
+		"lib": [
+			"es2022",
+			"dom",
+			"dom.iterable"
+		],
+		"jsx": "react-jsx"
+	},
+	"include": [
+		"./src",
+		"./__tests__/"
+	],
+	"exclude": [
+		"./node_modules",
+		"./dist"
+	]
 }

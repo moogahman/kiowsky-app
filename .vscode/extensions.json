@@ -3,6 +3,7 @@
 		"streetsidesoftware.code-spell-checker",
 		"dbaeumer.vscode-eslint",
 		"shd101wyy.markdown-preview-enhanced",
-		"seatonjiang.gitmoji-vscode"
+		"seatonjiang.gitmoji-vscode",
+		"github.vscode-github-actions"
 	]
 }
