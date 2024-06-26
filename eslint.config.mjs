@@ -12,4 +12,11 @@ export default [
     ...tseslint.configs.recommended,
     pluginReactConfig,
     eslintConfigPrettier,
+    {
+        rules: {
+            // Disable this rule because we are using the new JSX transform that was added to React 17
+            'react/react-in-jsx-scope': 'off',
+            'react/jsx-uses-react': 'off',
+        },
+    },
 ];
