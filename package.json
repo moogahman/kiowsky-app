@@ -6,7 +6,7 @@
     "type": "module",
     "scripts": {
         "start": "node ./dist/index.js",
-        "build": "rm -rf dist && pnpm tsc",
+        "build": "rm -rf dist && pnpm tsc -p tsconfig-build.json",
         "dev": "pnpm build && pnpm start",
         "lint": "pnpm exec eslint src/**/* ",
         "lint:fix": "pnpm exec eslint src/**/* --fix",
