@@ -5,7 +5,7 @@
     "main": "dist/index.js",
     "type": "module",
     "scripts": {
-        "start": "node ./dist/index.js",
+        "start": "react-scripts start",
         "build": "rm -rf dist && pnpm tsc -p tsconfig-build.json",
         "dev": "pnpm build && pnpm start",
         "lint": "pnpm exec eslint src/**/* ",
@@ -29,6 +29,7 @@
         "@types/eslint": "^8.56.10",
         "@types/node": "^20.14.6",
         "@types/react": "^18.3.3",
+        "@types/react-dom": "^18.3.0",
         "@vitest/coverage-v8": "^1.6.0",
         "eslint": "8.x",
         "eslint-config-prettier": "^9.1.0",
@@ -36,6 +37,7 @@
         "globals": "^15.6.0",
         "jsdom": "^24.1.0",
         "prettier": "^3.3.2",
+        "react-scripts": "^5.0.1",
         "ts-node": "^10.9.2",
         "typescript": "^5.4.5",
         "typescript-eslint": "^7.13.1",
@@ -45,6 +47,20 @@
         "@t3-oss/env-core": "^0.10.1",
         "dotenv": "^16.4.5",
         "firebase": "^10.12.2",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
         "zod": "^3.23.8"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
     }
 }

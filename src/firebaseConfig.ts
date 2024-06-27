@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { getAnalytics } from 'firebase/analytics';
-import { FirebaseOptions, initializeApp } from 'firebase/app';
+import { initializeApp, type FirebaseOptions } from 'firebase/app';
 import { env } from './env.js';
 
 // TODO: Add SDKs for Firebase products that you want to use
