@@ -29,6 +29,9 @@ function App() {
                     <FaCheese className="icon" size={35} />
                     <h1>Cold Food</h1>
                 </div>
+                <div>
+                    <h4 className="powered-by">Powered by</h4>
+                </div>
             </div>
         </div>
     );
