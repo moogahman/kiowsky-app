@@ -9,7 +9,7 @@ function App() {
                     <img src="https://via.placeholder.com/150" alt="profile" />
                 </div>
                 <div>
-                    <h1>1</h1>
+                    <h1>Drinks</h1>
                 </div>
                 <div>
                     <h1>2</h1>
