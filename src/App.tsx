@@ -1,4 +1,9 @@
 import React from 'react';
+// Using https://react-icons.github.io/react-icons
+import { BiSolidBowlHot } from 'react-icons/bi';
+import { FaBowlFood, FaCheese } from 'react-icons/fa6';
+import { RiDrinksFill } from 'react-icons/ri';
+
 import './App.css';
 
 function App() {
@@ -9,19 +14,20 @@ function App() {
                     <img src="https://via.placeholder.com/150" alt="profile" />
                 </div>
                 <div>
+                    <RiDrinksFill className="icon" size={35} />
                     <h1>Drinks</h1>
                 </div>
                 <div>
-                    <h1>2</h1>
+                    <BiSolidBowlHot className="icon" size={35} />
+                    <h1>Hot Food</h1>
                 </div>
                 <div>
-                    <h1>3</h1>
+                    <FaBowlFood className="icon" size={35} />
+                    <h1>Snacks</h1>
                 </div>
                 <div>
-                    <h1>4</h1>
-                </div>
-                <div>
-                    <h1>5</h1>
+                    <FaCheese className="icon" size={35} />
+                    <h1>Cold Food</h1>
                 </div>
             </div>
         </div>
