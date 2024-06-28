@@ -16,10 +16,10 @@
 
 .sidebar div {
     height: 15vh;
-    background-color: red;
-    border-top-width: 1px;
+    background-color: rgb(225, 225, 225);
+    border-top-width: 3px;
     border-top-style: solid;
-    border-top-color: black;
+    border-top-color: rgb(207, 207, 207);
     display: flex;
     justify-content: center;
     align-items: center;
