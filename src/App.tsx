@@ -31,6 +31,11 @@ function App() {
                 </div>
                 <div>
                     <h4 className="powered-by">Powered by</h4>
+                    <img
+                        alt="Kiowsky logo"
+                        src="./img/logo-text.png"
+                        className="logo-text"
+                    />
                 </div>
             </div>
         </div>
