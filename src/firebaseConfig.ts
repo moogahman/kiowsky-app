@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { getAnalytics } from 'firebase/analytics';
 import { initializeApp, type FirebaseOptions } from 'firebase/app';
+import { getDatabase } from 'firebase/database';
 import { env } from './env.js';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -20,5 +21,7 @@ const firebaseConfig: FirebaseOptions = {
 const app = initializeApp(firebaseConfig);
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const analytics = getAnalytics(app);
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const database = getDatabase(app);
 
-export { firebaseConfig };
+export { database, firebaseConfig };
