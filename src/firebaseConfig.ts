@@ -24,4 +24,4 @@ const analytics = getAnalytics(app);
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const database = getDatabase(app);
 
-export { database, firebaseConfig };
+export { analytics, database, firebaseConfig };
