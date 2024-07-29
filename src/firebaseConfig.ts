@@ -14,6 +14,7 @@ const firebaseConfig: FirebaseOptions = {
     messagingSenderId: env.FIREBASE_MESSAGING_SENDER_ID,
     appId: env.FIREBASE_APP_ID,
     measurementId: env.FIREBASE_MEASUREMENT_ID,
+    databaseURL: env.FIREBASE_DATABASE_URL,
 };
 
 // Initialize Firebase
