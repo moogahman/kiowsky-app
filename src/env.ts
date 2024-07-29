@@ -15,6 +15,7 @@ export const env = createEnv({
         FIREBASE_MESSAGING_SENDER_ID: z.string(),
         FIREBASE_APP_ID: z.string(),
         FIREBASE_MEASUREMENT_ID: z.string(),
+        FIREBASE_DATABASE_URL: z.string().url(),
     },
 
     /**
