@@ -1,43 +1,20 @@
 import React from 'react';
 // Using https://react-icons.github.io/react-icons
-import { BiSolidBowlHot } from 'react-icons/bi';
-import { FaBowlFood, FaCheese } from 'react-icons/fa6';
-import { RiDrinksFill } from 'react-icons/ri';
+import { Route, Routes } from 'react-router-dom';
+import Drinks from './drinks';
+import HotFood from './hotFood';
 
 import './App.css';
+import Sidebar from './sidebar';
 
 function App() {
     return (
         <div className="App">
-            <div className="sidebar">
-                <div>
-                    <img src="https://via.placeholder.com/150" alt="profile" />
-                </div>
-                <div>
-                    <RiDrinksFill className="icon" size={35} />
-                    <h1>Drinks</h1>
-                </div>
-                <div>
-                    <BiSolidBowlHot className="icon" size={35} />
-                    <h1>Hot Food</h1>
-                </div>
-                <div>
-                    <FaBowlFood className="icon" size={35} />
-                    <h1>Snacks</h1>
-                </div>
-                <div>
-                    <FaCheese className="icon" size={35} />
-                    <h1>Cold Food</h1>
-                </div>
-                <div>
-                    <h4 className="powered-by">Powered by</h4>
-                    <img
-                        alt="Kiowsky logo"
-                        src="./img/logo-text.png"
-                        className="logo-text"
-                    />
-                </div>
-            </div>
+            <Sidebar />
+            <Routes>
+                <Route path="/drinks" element={<Drinks />} />
+                <Route path="/hotfood" element={<HotFood />} />
+            </Routes>
         </div>
     );
 }
