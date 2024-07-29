@@ -6,7 +6,10 @@
     "type": "module",
     "scripts": {
         "start": "react-scripts start",
-        "build": "rm -rf dist && pnpm tsc -p tsconfig-build.json",
+        "clean": "rm -rf dist",
+        "build": "pnpm tsc -p tsconfig-build.json",
+        "build:watch": "pnpm run build -w",
+        "build:clean": "pnpm run clean && pnpm run build",
         "dev": "pnpm build && pnpm start",
         "lint": "pnpm exec eslint src/**/* ",
         "lint:fix": "pnpm exec eslint src/**/* --fix",
