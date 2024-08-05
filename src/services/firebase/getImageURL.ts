@@ -1,5 +1,5 @@
 import { getDownloadURL, ref } from 'firebase/storage';
-import { storage } from '../firebaseConfig.js';
+import { storage } from '../../firebaseConfig.js';
 
 const imageRef = ref(storage, 'Muffin.webp');
 

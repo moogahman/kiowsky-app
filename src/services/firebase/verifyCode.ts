@@ -1,7 +1,7 @@
 // TO-DO: Integrate auth with login screen
 
 import { child, get, ref } from 'firebase/database';
-import { database } from '../firebaseConfig.js';
+import { database } from '../../firebaseConfig.js';
 
 // Code for testing
 const code = '123456';
