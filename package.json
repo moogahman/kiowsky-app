@@ -16,7 +16,8 @@
         "format": "pnpm exec prettier src/**/* --write",
         "test": "vitest",
         "test:coverage": "vitest run --coverage",
-        "dotenv-vault": "pnpm dlx dotenv-vault@latest"
+        "dotenv-vault": "pnpm dlx dotenv-vault@latest",
+        "ts-node": "node --import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'"
     },
     "keywords": [
         "mcdonalds",
