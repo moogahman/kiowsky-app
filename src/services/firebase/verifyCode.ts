@@ -3,17 +3,6 @@
 import { child, get, ref } from 'firebase/database';
 import { database } from '../../firebaseConfig.js';
 
-// Code for testing
-const code = '123456';
-
-verifyCode(code).then(isValid => {
-    if (isValid) {
-        console.log('Code is valid.');
-    } else {
-        console.log('Code is invalid.');
-    }
-});
-
 async function verifyCode(code: string): Promise<boolean> {
     const dbRef = ref(database);
 
@@ -35,3 +24,5 @@ async function verifyCode(code: string): Promise<boolean> {
         return false;
     }
 }
+
+export { verifyCode };
