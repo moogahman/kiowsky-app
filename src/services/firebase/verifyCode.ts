@@ -1,7 +1,7 @@
 // TO-DO: Integrate auth with login screen
 
 import { child, get, ref } from 'firebase/database';
-import { database } from '../../firebaseConfig.js';
+import { database } from '../../config/firebaseConfig.js';
 
 async function verifyCode(code: string): Promise<boolean> {
     const dbRef = ref(database);
