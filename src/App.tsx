@@ -1,29 +1,24 @@
 import React from 'react';
+// Using https://react-icons.github.io/react-icons
+import { Route, Routes } from 'react-router-dom';
+import ColdFood from './coldFood';
+import Drinks from './drinks';
+import HotFood from './hotFood';
+import Snacks from './snacks';
+
 import './App.css';
+import Sidebar from './sidebar';
 
 function App() {
     return (
         <div className="App">
-            <div className="sidebar">
-                <div>
-                    <img src="https://via.placeholder.com/150" alt="profile" />
-                </div>
-                <div>
-                    <h1>1</h1>
-                </div>
-                <div>
-                    <h1>2</h1>
-                </div>
-                <div>
-                    <h1>3</h1>
-                </div>
-                <div>
-                    <h1>4</h1>
-                </div>
-                <div>
-                    <h1>5</h1>
-                </div>
-            </div>
+            <Sidebar />
+            <Routes>
+                <Route path="/drinks" element={<Drinks />} />
+                <Route path="/hotfood" element={<HotFood />} />
+                <Route path="/coldfood" element={<ColdFood />} />
+                <Route path="/snacks" element={<Snacks />} />
+            </Routes>
         </div>
     );
 }
