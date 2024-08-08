@@ -1,13 +1,13 @@
 import React from 'react';
 // Using https://react-icons.github.io/react-icons
 import { Route, Routes } from 'react-router-dom';
-import ColdFood from './coldFood';
-import Drinks from './drinks';
-import HotFood from './hotFood';
-import Snacks from './snacks';
+import ColdFood from './components/sidebar/coldFood/coldFood';
+import Drinks from './components/sidebar/drinks/drinks';
+import HotFood from './components/sidebar/hotFood/hotFood';
+import Snacks from './components/sidebar/snacks/snacks';
 
 import './App.css';
-import Sidebar from './sidebar';
+import Sidebar from './components/sidebar/sidebar';
 
 function App() {
     return (
