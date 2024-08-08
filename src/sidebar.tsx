@@ -24,14 +24,18 @@ function Sidebar() {
                     <h1>Hot Food</h1>
                 </div>
             </Link>
-            <div>
-                <FaBowlFood className="icon" size={35} />
-                <h1>Snacks</h1>
-            </div>
-            <div>
-                <FaCheese className="icon" size={35} />
-                <h1>Cold Food</h1>
-            </div>
+            <Link to="/snacks" className="link3">
+                <div>
+                    <FaBowlFood className="icon" size={35} />
+                    <h1>Snacks</h1>
+                </div>
+            </Link>
+            <Link to="/coldfood" className="link4">
+                <div>
+                    <FaCheese className="icon" size={35} />
+                    <h1>Cold Food</h1>
+                </div>
+            </Link>
             <div>
                 <h4 className="powered-by">Powered by</h4>
                 <img
