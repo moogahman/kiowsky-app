@@ -1,32 +1,47 @@
 import { child, get, ref } from 'firebase/database';
 import { database } from '../../config/firebaseConfig.js';
-import type { Item } from '../../types/services/firebase/index.js';
+import type { Item, Items } from '../../types/services/firebase';
 
+await getSidebarCategories('nbcs');
+
+/**
+ * Returns an object with items sorted into the categories
+ * @param kioskId The Kiosk ID
+ * @returns Promise<Items | undefined>
+ */
 async function getSidebarCategories(
     kioskId: string
-): Promise<string[] | undefined> {
+): Promise<Items | undefined> {
     try {
         const dbRef = ref(database);
 
         const snapshot = await get(child(dbRef, `kiosks/${kioskId}/items`));
 
-        const items = snapshot.toJSON();
-        const categories: string[] = [];
+        // Snapshot object to JSON
+        const databaseItems = snapshot.toJSON();
 
-        if (!items) {
+        if (!databaseItems) {
             console.error('No items found in database');
-            return categories;
+            return undefined;
         }
 
-        Object.values(items).forEach((item: Item) => {
+        const items: Items = {};
+
+        // Iterate through the items object and categorize them
+        Object.values(databaseItems).forEach((item: Item) => {
             const category = item.category;
 
-            if (categories.includes(category)) return;
+            // If the category is not already a key in "items" add it
+            if (!items[category]) {
+                items[category] = [];
+            }
 
-            categories.push(category);
+            items[category].push(item);
         });
 
-        return categories;
+        console.log(items);
+
+        return items;
     } catch (error) {
         console.error('Error getting sidebar categories:', error);
     }
