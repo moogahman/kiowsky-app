@@ -2,16 +2,14 @@ import { child, get, ref } from 'firebase/database';
 import { database } from '../../config/firebaseConfig.js';
 import type { Item, Items } from '../../types/services/firebase';
 
-await getSidebarCategories('nbcs');
+await getItems('nbcs');
 
 /**
  * Returns an object with items sorted into the categories
  * @param kioskId The Kiosk ID
  * @returns Promise<Items | undefined>
  */
-async function getSidebarCategories(
-    kioskId: string
-): Promise<Items | undefined> {
+async function getItems(kioskId: string): Promise<Items | undefined> {
     try {
         const dbRef = ref(database);
 
@@ -45,4 +43,4 @@ async function getSidebarCategories(
     }
 }
 
-export { getSidebarCategories };
+export { getItems };
