@@ -3,7 +3,3 @@ export interface Item {
     name: string;
     price: number;
 }
-
-export interface Items {
-    [key: string]: Item;
-}
