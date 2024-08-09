@@ -2,7 +2,9 @@ import { child, get, ref } from 'firebase/database';
 import { database } from '../../config/firebaseConfig.js';
 import type { Item } from '../../types/services/firebase';
 
-async function getSidebarCategories(kioskId: string) {
+async function getSidebarCategories(
+    kioskId: string
+): Promise<string[] | undefined> {
     try {
         const dbRef = ref(database);
 
@@ -11,7 +13,10 @@ async function getSidebarCategories(kioskId: string) {
         const items = snapshot.toJSON();
         const categories: string[] = [];
 
-        if (!items) return console.error('No items found');
+        if (!items) {
+            console.error('No items found in database');
+            return categories;
+        }
 
         Object.values(items).forEach((item: Item) => {
             const category = item.category;
@@ -20,6 +25,8 @@ async function getSidebarCategories(kioskId: string) {
 
             categories.push(category);
         });
+
+        return categories;
     } catch (error) {
         console.error('Error getting sidebar categories:', error);
     }
