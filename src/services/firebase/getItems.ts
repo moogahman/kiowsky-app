@@ -39,8 +39,6 @@ async function getSidebarCategories(
             items[category].push(item);
         });
 
-        console.log(items);
-
         return items;
     } catch (error) {
         console.error('Error getting sidebar categories:', error);
