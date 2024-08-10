@@ -1,15 +1,7 @@
 import { child, get, ref } from 'firebase/database';
-import {
-    afterEach,
-    beforeEach,
-    describe,
-    expect,
-    it,
-    type Mock,
-    vi,
-} from 'vitest';
+import { beforeEach, describe, expect, it, vi, type Mock } from 'vitest';
 import { database } from '../../../src/config/firebaseConfig.js';
-import { verifyCode } from '../../../src/services/firebase/verifyCode';
+import { verifyCode } from '../../../src/services/firebase/verifyCode.js';
 
 vi.mock('../../../src/config/env', () => ({
     env: {
@@ -24,63 +16,47 @@ vi.mock('../../../src/config/env', () => ({
     },
 }));
 
-vi.mock('firebase/database', () => ({
-    get: vi.fn(),
-    child: vi.fn(),
-    ref: vi.fn(),
-    getDatabase: vi.fn(),
-}));
-
-// ... existing imports and mocks ...
+// Mock Firebase modules
+vi.mock('firebase/database');
 
 describe('verifyCode', () => {
-    const mockKioskId = 'mock-kiosk';
-    const mockCode = '12345';
-    const dbRef = {};
-
     beforeEach(() => {
-        (ref as Mock).mockReturnValue(dbRef);
-        (child as Mock).mockReturnValue({});
+        vi.resetAllMocks();
     });
 
-    afterEach(() => {
-        vi.clearAllMocks();
-    });
+    it('should return true when the code matches', async () => {
+        const mockRef = {};
+        (ref as Mock).mockReturnValue(mockRef);
+        const mockChild = {};
+        (child as Mock).mockReturnValue(mockChild);
+        const mockSnapshot = {
+            val: vi.fn().mockReturnValue('123456'),
+        };
+        (get as Mock).mockResolvedValue(mockSnapshot);
 
-    it('should return true if the code exists', async () => {
-        (get as Mock).mockResolvedValue({
-            exists: () => true,
-            val: () => mockCode,
-        });
-
-        const result = await verifyCode(mockKioskId, mockCode);
-
+        const result = await verifyCode('kiosk1', '123456');
         expect(result).toBe(true);
+
         expect(ref).toHaveBeenCalledWith(database);
-        expect(child).toHaveBeenCalledWith(dbRef, `kiosks/${mockKioskId}/code`);
-        expect(get).toHaveBeenCalled();
+        expect(child).toHaveBeenCalledWith(mockRef, 'kiosks/kiosk1/code');
+        expect(get).toHaveBeenCalledWith(mockChild);
     });
 
-    it('should return false if the code does not exist', async () => {
-        (get as Mock).mockResolvedValue({
-            exists: () => true,
-            val: () => 'different-code',
-        });
+    it('should return false when the code does not match', async () => {
+        const mockSnapshot = {
+            val: vi.fn().mockReturnValue('123456'),
+        };
+        (get as Mock).mockResolvedValue(mockSnapshot);
 
-        const result = await verifyCode(mockKioskId, mockCode);
+        const result = await verifyCode('kiosk1', '654321');
         expect(result).toBe(false);
-        expect(ref).toHaveBeenCalledWith(database);
-        expect(child).toHaveBeenCalledWith(dbRef, `kiosks/${mockKioskId}/code`);
-        expect(get).toHaveBeenCalled();
     });
 
-    it('should return false if there is an error', async () => {
-        (get as Mock).mockRejectedValue(new Error('Test error'));
+    it('should throw an error when there is a database error', async () => {
+        (get as Mock).mockRejectedValue(new Error('Database error'));
 
-        const result = await verifyCode(mockKioskId, mockCode);
-        expect(result).toBe(false);
-        expect(ref).toHaveBeenCalledWith(database);
-        expect(child).toHaveBeenCalledWith(dbRef, `kiosks/${mockKioskId}/code`);
-        expect(get).toHaveBeenCalled();
+        await expect(verifyCode('kiosk1', '123456')).rejects.toThrow(
+            'Error verifying code: Error: Database error'
+        );
     });
 });
