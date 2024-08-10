@@ -9,7 +9,7 @@ await getItems('nbcs');
  * @param kioskId The Kiosk ID
  * @returns Promise<Items | undefined>
  */
-async function getItems(kioskId: string): Promise<Items | undefined> {
+async function getItems(kioskId: string) {
     try {
         const dbRef = ref(database);
 
@@ -19,8 +19,8 @@ async function getItems(kioskId: string): Promise<Items | undefined> {
         const databaseItems = snapshot.toJSON();
 
         if (!databaseItems) {
-            console.error('No items found in database');
-            return undefined;
+            console.warn('No items found in database for kiosk:', kioskId);
+            return {};
         }
 
         const items: Items = {};
@@ -39,7 +39,7 @@ async function getItems(kioskId: string): Promise<Items | undefined> {
 
         return items;
     } catch (error) {
-        console.error('Error getting sidebar categories:', error);
+        throw new Error('Error getting sidebar categories: ' + error);
     }
 }
 

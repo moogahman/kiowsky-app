@@ -1,7 +1,7 @@
 import { getDownloadURL, ref } from 'firebase/storage';
 import { storage } from '../../config/firebaseConfig.js';
 
-async function getFileURL(url: string): Promise<string | null> {
+async function getFileURL(url: string): Promise<string> {
     try {
         const storageRef = ref(storage, url);
 
@@ -9,9 +9,7 @@ async function getFileURL(url: string): Promise<string | null> {
 
         return fileURL;
     } catch (error) {
-        console.error('Error retrieving File URL:', error);
-
-        return null;
+        throw new Error('Error retrieving File URL:' + error);
     }
 }
 
