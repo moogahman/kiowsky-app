@@ -3,13 +3,15 @@
 import { child, get, ref } from 'firebase/database';
 import { database } from '../../config/firebaseConfig.js';
 
-async function verifyCode(code: string): Promise<boolean> {
+async function verifyCode(kioskId: string, code: string): Promise<boolean> {
     const dbRef = ref(database);
 
     try {
-        const snapshot = await get(child(dbRef, `codes/${code}`));
+        const snapshot = await get(child(dbRef, `kiosks/${kioskId}/code`));
 
-        if (snapshot.exists()) {
+        const snapshotCode = snapshot.val() as string;
+
+        if (snapshotCode === code) {
             // If code exists, setup the kiosk
 
             return true;
