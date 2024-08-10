@@ -21,7 +21,7 @@ async function verifyCode(kioskId: string, code: string): Promise<boolean> {
             return false;
         }
     } catch (error) {
-        console.error('Error verifying code:', error);
+        new Error('Error verifying code: ' + error);
 
         return false;
     }
