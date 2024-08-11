@@ -1,4 +1,3 @@
-import React from 'react';
 import { BiSolidBowlHot } from 'react-icons/bi';
 import { FaBowlFood, FaCheese } from 'react-icons/fa6';
 import { RiDrinksFill } from 'react-icons/ri';
@@ -40,7 +39,7 @@ function Sidebar() {
                 <h4 className="powered-by">Powered by</h4>
                 <img
                     alt="Kiowsky logo"
-                    src="./img/logo-text.png"
+                    src="./img/Logo-text.png"
                     className="logo-text"
                 />
             </div>
