@@ -1,10 +1,11 @@
 import React from 'react';
 import { BiSolidBowlHot } from 'react-icons/bi';
 import { FaBowlFood, FaCheese } from 'react-icons/fa6';
-import { RiDrinksFill } from 'react-icons/ri';
-import { Link } from 'react-router-dom';
 
 import './sidebar.css';
+
+import { RiDrinksFill } from 'react-icons/ri';
+import Tab from './tabs/tab';
 
 function Sidebar() {
     return (
@@ -12,30 +13,10 @@ function Sidebar() {
             <div>
                 <img src="https://via.placeholder.com/150" alt="profile" />
             </div>
-            <Link to="/drinks" className="link1">
-                <div>
-                    <RiDrinksFill className="icon" size={35} />
-                    <h1>Drinks</h1>
-                </div>
-            </Link>
-            <Link to="/hotfood" className="link2">
-                <div>
-                    <BiSolidBowlHot className="icon" size={35} />
-                    <h1>Hot Food</h1>
-                </div>
-            </Link>
-            <Link to="/snacks" className="link3">
-                <div>
-                    <FaBowlFood className="icon" size={35} />
-                    <h1>Snacks</h1>
-                </div>
-            </Link>
-            <Link to="/coldfood" className="link4">
-                <div>
-                    <FaCheese className="icon" size={35} />
-                    <h1>Cold Food</h1>
-                </div>
-            </Link>
+            <Tab title="Drinks" link="/drinks" Icon={RiDrinksFill} />
+            <Tab title="Hot Food" link="/hotfodd" Icon={BiSolidBowlHot} />
+            <Tab title="Snacks" link="/snacks" Icon={FaBowlFood} />
+            <Tab title="Cold Food" link="/coldfood" Icon={FaCheese} />
             <div>
                 <h4 className="powered-by">Powered by</h4>
                 <img
