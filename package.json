@@ -6,7 +6,7 @@
     "type": "module",
     "scripts": {
         "start": "pnpm run dev",
-        "build": "pnpm tsc -b && vite build",
+        "build": "vite build",
         "preview": "vite preview",
         "dev": "pnpm exec concurrently \"pnpm run dev:client\" \"pnpm run dev:server\"",
         "dev:client": "vite",

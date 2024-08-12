@@ -1,5 +1,5 @@
-import { getFileURL } from './getFileURL';
-import { getItems } from './getItems';
-import { verifyCode } from './verifyCode';
+import { getFileURL } from './getFileURL.js';
+import { getItems } from './getItems.js';
+import { verifyCode } from './verifyCode.js';
 
 export { getFileURL, getItems, verifyCode };

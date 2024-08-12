@@ -1,7 +1,7 @@
 import { child, get, ref } from 'firebase/database';
 import { beforeEach, describe, expect, it, vi, type Mock } from 'vitest';
 import { getItems } from '../../../src/services/firebase/getItems.js';
-import type { Items } from '../../../src/types/services/firebase';
+import type { Items } from '../../../src/types/services/firebase.js';
 
 // Mock firebase methods
 vi.mock('firebase/database', () => ({
