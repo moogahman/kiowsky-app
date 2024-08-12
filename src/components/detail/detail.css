@@ -1,0 +1,32 @@
+.close-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.cart-btn {
+    position: absolute;
+    bottom: 10px;
+    background-color: #5271ff;
+    width: 70vw;
+    margin-left: 5vw;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgb(209, 208, 208);
+}
+
+.cart-btn-txt {
+    color: black;
+}
+
+.img-main {
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.detail-img {
+    width: 25vw;
+    object-fit: cover;
+}
