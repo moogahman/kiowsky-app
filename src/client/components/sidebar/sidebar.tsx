@@ -1,4 +1,3 @@
-import React from 'react';
 import { BiSolidBowlHot } from 'react-icons/bi';
 import { FaBowlFood, FaCheese } from 'react-icons/fa6';
 import { RiDrinksFill } from 'react-icons/ri';
