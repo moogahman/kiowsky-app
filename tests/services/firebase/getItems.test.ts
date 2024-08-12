@@ -47,7 +47,7 @@ describe('getItems', () => {
         expect(result).toEqual(expectedItems);
     });
 
-    it('should return undefined when no items are found', async () => {
+    it('should return {}} when no items are found', async () => {
         const mockSnapshot = {
             toJSON: vi.fn().mockReturnValue(null),
         };
@@ -58,7 +58,7 @@ describe('getItems', () => {
 
         const result = await getItems('nbcs');
 
-        expect(result).toBeUndefined();
+        expect(result).toStrictEqual({});
     });
 
     it('should handle errors gracefully', async () => {
