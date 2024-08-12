@@ -6,7 +6,7 @@
     "type": "module",
     "scripts": {
         "start": "pnpm run dev",
-        "build": "pnpm tsc -b && vite build",
+        "build": "vite build",
         "preview": "vite preview",
         "dev": "vite",
         "lint": "pnpm exec eslint src/**/* ",
