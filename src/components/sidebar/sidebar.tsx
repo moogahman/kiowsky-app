@@ -1,12 +1,14 @@
 import { BiSolidBowlHot } from 'react-icons/bi';
 import { FaBowlFood, FaCheese } from 'react-icons/fa6';
+import { RiDrinksFill } from 'react-icons/ri';
 
 import './sidebar.css';
 
-import { RiDrinksFill } from 'react-icons/ri';
+// import { getItems } from '../../services/firebase';
 import Tab from './tabs/tab';
 
 function Sidebar() {
+    // console.log(getItems('nbcs'));
     return (
         <div className="sidebar">
             <div>
