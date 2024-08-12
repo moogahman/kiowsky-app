@@ -1,6 +1,9 @@
 import { child, get, ref } from 'firebase/database';
-import { database } from '../../../config/firebaseConfig.js';
-import type { Item, Items } from '../../types/services/firebase/index.js';
+import type {
+    Item,
+    Items,
+} from '../../client/types/services/firebase/index.js';
+import { database } from '../../config/firebaseConfig.js';
 
 await getItems('nbcs');
 
@@ -20,7 +23,7 @@ async function getItems(kioskId: string): Promise<Items | undefined> {
 
         if (!databaseItems) {
             console.error('No items found in database');
-            return undefined;
+            return {};
         }
 
         const items: Items = {};
