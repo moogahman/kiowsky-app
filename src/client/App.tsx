@@ -1,5 +1,5 @@
-import React from 'react';
 // Using https://react-icons.github.io/react-icons
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import ColdFood from './components/sidebar/coldFood/coldFood';
 import Drinks from './components/sidebar/drinks/drinks';

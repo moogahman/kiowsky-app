@@ -1,5 +1,5 @@
 import { child, get, ref } from 'firebase/database';
-import { database } from '../../config/firebaseConfig.js';
+import { database } from '../../../config/firebaseConfig.js';
 import type { Item, Items } from '../../types/services/firebase';
 
 await getItems('nbcs');

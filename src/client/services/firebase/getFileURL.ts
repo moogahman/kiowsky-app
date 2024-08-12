@@ -1,5 +1,5 @@
 import { getDownloadURL, ref } from 'firebase/storage';
-import { storage } from '../../config/firebaseConfig.js';
+import { storage } from '../../../config/firebaseConfig.js';
 
 async function getFileURL(url: string): Promise<string | null> {
     try {
