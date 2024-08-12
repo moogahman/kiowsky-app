@@ -1,3 +1,4 @@
+import React from 'react';
 import './item.css';
 
 interface ItemProps {
