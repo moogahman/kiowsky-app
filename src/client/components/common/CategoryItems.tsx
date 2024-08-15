@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import type { MenuItemData } from '../../types';
-import { Item as ItemComponent } from '../items/item';
+import type { MenuItemData } from '../../../shared/types';
+import { Item as ItemComponent } from '../items/Item';
 
 interface CategoryItemsProps {
     category: string;

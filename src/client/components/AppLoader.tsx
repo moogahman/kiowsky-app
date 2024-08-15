@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import type { CategoryMenuData } from '../types';
+import type { CategoryMenuData } from '../../shared/types';
 import './AppLoader.css';
 
 interface AppLoaderProps {

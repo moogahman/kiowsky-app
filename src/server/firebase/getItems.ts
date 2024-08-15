@@ -7,8 +7,8 @@ import {
 import type {
     CategoryMenuData,
     MenuItemData,
-} from '../../client/types/index.js';
-import { database } from '../../config/firebaseConfig.js';
+} from '../../shared/types/index.js';
+import { database } from '../config/firebaseConfig.js';
 
 /**
  * Returns an object with items sorted into the categories
