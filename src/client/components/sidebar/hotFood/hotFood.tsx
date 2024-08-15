@@ -1,8 +1,11 @@
-import { Item } from '../../items/item.js';
+import { useState } from 'react';
+import type { Item } from '../../../types';
 
 import './hotFood.css';
 
 function HotFood() {
+    const [items, setItems] = useState<Item[] | []>([]);
+
     return (
         <div className="main-1">
             <h1>Hot Food</h1>

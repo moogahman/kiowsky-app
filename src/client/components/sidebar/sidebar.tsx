@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-import type { Item, Items } from '../../types/services/firebase';
+import type { Item, Items } from '../../types';
 import { getCategoryIcon } from '../../utils';
 import './sidebar.css';
 import Tab from './tabs/tab';

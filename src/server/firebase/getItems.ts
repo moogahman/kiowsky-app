@@ -1,8 +1,5 @@
 import { child, get, ref } from 'firebase/database';
-import type {
-    Item,
-    Items,
-} from '../../client/types/services/firebase/index.js';
+import type { Item, Items } from '../../client/types/index.js';
 import { database } from '../../config/firebaseConfig.js';
 
 /**
