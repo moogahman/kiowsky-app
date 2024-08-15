@@ -2,8 +2,8 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AppLoader from './components/AppLoader';
+import DynamicCategory from './components/categories/DynamicCategory';
 import Detail from './components/detail/detail';
-import DynamicCategory from './components/sidebar/DynamicCategory';
 import Sidebar from './components/sidebar/sidebar';
 
 function App() {
