@@ -1,7 +1,7 @@
 // Using https://react-icons.github.io/react-icons
 import { Route, Routes } from 'react-router-dom';
-import Detail from '../components/detail/detail';
 import './App.css';
+import Detail from './components/detail/detail';
 import ColdFood from './components/sidebar/coldFood/coldFood.jsx';
 import Drinks from './components/sidebar/drinks/drinks.jsx';
 import HotFood from './components/sidebar/hotFood/hotFood.jsx';

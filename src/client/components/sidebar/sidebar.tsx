@@ -1,21 +1,45 @@
-import { BiSolidBowlHot } from 'react-icons/bi';
-import { FaBowlFood, FaCheese } from 'react-icons/fa6';
-import { RiDrinksFill } from 'react-icons/ri';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
+import type { Item, Items } from '../../types/services/firebase';
 import './sidebar.css';
-
-// import { getItems } from '../../services/firebase';
 import Tab from './tabs/tab';
 
-function Sidebar() {
-    // console.log(getItems('nbcs'));
-    return (
+const Sidebar: React.FC = () => {
+    const [items, setItems] = useState<[string, Item[]][] | null>(null);
+
+    useEffect(() => {
+        async function fetchItems() {
+            try {
+                const response = await axios.get(
+                    'http://localhost:3000/api/items/nbcs'
+                );
+                const fetchedItems = response.data as Items;
+
+                if (!fetchedItems) {
+                    return console.log(
+                        'No items found for the given kiosk ID.'
+                    );
+                }
+
+                console.log('Fetched items:', fetchedItems);
+
+                setItems(Object.entries(fetchedItems));
+            } catch (error) {
+                console.error('Error fetching items:', error);
+            }
+        }
+
+        fetchItems();
+    }, []);
+
+    /* return (
         <div className="sidebar">
             <div>
                 <img src="https://via.placeholder.com/150" alt="profile" />
             </div>
             <Tab title="Drinks" link="/drinks" Icon={RiDrinksFill} />
-            <Tab title="Hot Food" link="/hotfodd" Icon={BiSolidBowlHot} />
+            <Tab title="Hot Food" link="/hotfood" Icon={BiSolidBowlHot} />
             <Tab title="Snacks" link="/snacks" Icon={FaBowlFood} />
             <Tab title="Cold Food" link="/coldfood" Icon={FaCheese} />
             <div>
@@ -27,7 +51,35 @@ function Sidebar() {
                 />
             </div>
         </div>
+    ); */
+
+    return (
+        <div className="sidebar">
+            <div>
+                <img src="https://via.placeholder.com/150" alt="profile" />
+            </div>
+            {items ? (
+                items.map((item, index) => (
+                    <Tab
+                        key={index}
+                        title={item[0]}
+                        //link={item[0]}
+                        // Icon={item[1].icon}
+                    />
+                ))
+            ) : (
+                <p>Loading items...</p>
+            )}
+            <div>
+                <h4 className="powered-by">Powered by</h4>
+                <img
+                    alt="Kiowsky logo"
+                    src="./img/Logo-text.png"
+                    className="logo-text"
+                />
+            </div>
+        </div>
     );
-}
+};
 
 export default Sidebar;
