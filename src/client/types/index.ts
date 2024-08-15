@@ -4,6 +4,7 @@ export interface MenuItemData {
     category: string;
     name: string;
     price: number;
+    image: string;
 }
 
 export interface CategoryMenuData {
@@ -14,7 +15,7 @@ export interface MenuItemDisplayProps {
     price: number;
     title: string;
     link: string;
-    // image: string;
+    image: string;
 }
 
 export interface CategoryTabProps {

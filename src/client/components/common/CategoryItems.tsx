@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import type { MenuItemData } from '../../types';
+import type { CategoryMenuData, MenuItemData } from '../../types';
 import { Item as ItemComponent } from '../items/item';
 
 interface CategoryItemsProps {
@@ -24,7 +24,7 @@ function CategoryItems({ category, className = 'main' }: CategoryItemsProps) {
                 const response = await axios.get(
                     'http://localhost:3000/api/items/nbcs'
                 );
-                const fetchedItems = response.data;
+                const fetchedItems = response.data as CategoryMenuData;
 
                 if (!fetchedItems || !fetchedItems[category]) {
                     return console.log(`No ${category} items found.`);
@@ -57,7 +57,7 @@ function CategoryItems({ category, className = 'main' }: CategoryItemsProps) {
                         price={item.price}
                         title={item.name}
                         link="/detail"
-                        // image={item.image}
+                        image={item.image}
                     />
                 ))
             ) : (

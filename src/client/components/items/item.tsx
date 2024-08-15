@@ -1,7 +1,7 @@
 import type { MenuItemDisplayProps } from '../../types';
 import './item.css';
 
-export function Item({ price, title, link }: MenuItemDisplayProps) {
+export function Item({ price, title, link, image }: MenuItemDisplayProps) {
     return (
         <div
             className="container-item"
@@ -9,7 +9,7 @@ export function Item({ price, title, link }: MenuItemDisplayProps) {
                 window.location.href = link;
             }}>
             <div className="image-container">
-                {/** <img className="item-image" alt="Item image" src={image} /> */}
+                <img className="item-image" alt="Item image" src={image} />
             </div>
             <div className="text-container">
                 <a className="item-title">{title}</a>
