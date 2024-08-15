@@ -12,6 +12,7 @@ export default [
     { languageOptions: { parserOptions: { ecmaFeatures: { jsx: true } } } },
     { languageOptions: { globals: globals.browser } },
     { plugins: { 'react-hooks': reactHooks, 'react-refresh': reactRefresh } },
+    { settings: { react: { version: 'detect' } } },
     pluginJs.configs.recommended,
     ...tseslint.configs.recommended,
     pluginReactConfig,

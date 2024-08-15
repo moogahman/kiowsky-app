@@ -1,0 +1,107 @@
+.close-icon {
+    position: absolute;
+    top: 2vw;
+    right: 2vw;
+}
+
+.cart-btn {
+    position: absolute;
+    bottom: 10px;
+    background-color: #5271ff;
+    width: 70vw;
+    margin-left: 5vw;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgb(209, 208, 208);
+}
+
+.cart-btn-txt {
+    color: black;
+}
+
+.img-main {
+    width: 100vw;
+    align-items: center;
+    display: flex;
+    margin-top: 150px;
+}
+
+.detail-img {
+    width: 25vw;
+    object-fit: cover;
+    margin-left: 27.5vw;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgb(209, 208, 208);
+}
+
+.title {
+    font-size: 60px;
+    position: absolute;
+    top: 200px;
+    left: 25vw;
+}
+
+.price {
+    font-size: 20px;
+    position: absolute;
+    top: 320px;
+    left: 25vw;
+    font-weight: 400;
+}
+
+.quantity-contain {
+    position: absolute;
+    top: 340px;
+    right: 2vw;
+    display: flex;
+    align-items: center;
+}
+
+.quantity-count {
+    direction: row;
+    display: inline-flex;
+    position: relative;
+    bottom: 50px;
+    right: 120px;
+}
+
+.quantity-num {
+    font-size: 20px;
+    margin: -2px 10px;
+}
+
+.minus-btn {
+    background-color: #5271ff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    position: relative;
+    right: 50px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    top: 7px;
+}
+
+.plus-btn {
+    background-color: #5271ff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    position: relative;
+    left: 50px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    top: 7px;
+}
+
+.quantity-num {
+    font-size: 30px;
+}
