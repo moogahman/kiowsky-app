@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 import type { Item, Items } from '../../types/services/firebase';
+import { getCategoryIcon } from '../../utils';
 import './sidebar.css';
 import Tab from './tabs/tab';
 
@@ -67,12 +68,14 @@ const Sidebar: React.FC = () => {
                         .toLowerCase()
                         .replace(/\s+/g, '');
 
+                    const icon = getCategoryIcon(item[0]);
+
                     return (
                         <Tab
                             key={index}
                             title={item[0]}
                             link={link}
-                            // Icon={item[1].icon}
+                            Icon={icon}
                         />
                     );
                 })
