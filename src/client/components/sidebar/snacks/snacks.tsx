@@ -1,13 +1,8 @@
-import React from 'react';
-
+import CategoryItems from '../../common/CategoryItems';
 import './snacks.css';
 
 function Snacks() {
-    return (
-        <div className="main">
-            <h1>Snacks</h1>
-        </div>
-    );
+    return <CategoryItems category="Snacks" />;
 }
 
 export default Snacks;

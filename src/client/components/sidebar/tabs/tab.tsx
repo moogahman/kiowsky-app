@@ -1,13 +1,7 @@
-import type { IconType } from 'react-icons';
 import { Link } from 'react-router-dom';
+import type { CategoryTabProps } from '../../../types';
 
-interface ItemProps {
-    title: string;
-    link: string;
-    Icon: IconType;
-}
-
-function Tab({ title, link, Icon }: ItemProps) {
+function Tab({ title, link, Icon }: CategoryTabProps) {
     return (
         <Link to={link} className="link1">
             <div>

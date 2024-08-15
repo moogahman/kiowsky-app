@@ -1,14 +1,7 @@
-import React from 'react';
+import type { MenuItemDisplayProps } from '../../types';
 import './item.css';
 
-interface ItemProps {
-    price: number;
-    title: string;
-    link: string;
-    image: string;
-}
-
-export function Item({ price, title, link, image }: ItemProps) {
+export function Item({ price, title, link }: MenuItemDisplayProps) {
     return (
         <div
             className="container-item"
@@ -16,7 +9,7 @@ export function Item({ price, title, link, image }: ItemProps) {
                 window.location.href = link;
             }}>
             <div className="image-container">
-                <img className="item-image" alt="Item image" src={image} />
+                {/** <img className="item-image" alt="Item image" src={image} /> */}
             </div>
             <div className="text-container">
                 <a className="item-title">{title}</a>

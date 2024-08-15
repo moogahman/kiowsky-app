@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-import type { Item, Items } from '../../types';
+import type { CategoryMenuData, MenuItemData } from '../../types';
 import { getCategoryIcon } from '../../utils';
 import './sidebar.css';
 import Tab from './tabs/tab';
 
 const Sidebar: React.FC = () => {
-    const [items, setItems] = useState<[string, Item[]][] | null>(null);
+    const [items, setItems] = useState<[string, MenuItemData[]][] | null>(null);
 
     useEffect(() => {
         async function fetchItems() {
@@ -22,7 +22,7 @@ const Sidebar: React.FC = () => {
                 const response = await axios.get(
                     'http://localhost:3000/api/items/nbcs'
                 );
-                const fetchedItems = response.data as Items;
+                const fetchedItems = response.data as CategoryMenuData;
 
                 if (!fetchedItems) {
                     console.log('No items found for the given kiosk ID.');

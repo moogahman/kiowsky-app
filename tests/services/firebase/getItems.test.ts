@@ -1,6 +1,6 @@
 import { child, get, ref } from 'firebase/database';
 import { beforeEach, describe, expect, it, vi, type Mock } from 'vitest';
-import type { Items } from '../../../src/client/types/services/firebase';
+import type { CategoryMenuData } from '../../../src/client/types';
 import { getItems } from '../../../src/server/firebase/getItems.js';
 
 // Mock firebase methods
@@ -36,7 +36,7 @@ describe('getItems', () => {
 
         const result = await getItems('nbcs');
 
-        const expectedItems: Items = {
+        const expectedItems: CategoryMenuData = {
             A: [
                 { category: 'A', name: 'Item 1', price: 5 },
                 { category: 'A', name: 'Item 3', price: 5 },

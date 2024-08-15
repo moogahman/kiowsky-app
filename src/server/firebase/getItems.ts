@@ -1,13 +1,18 @@
 import { child, get, ref } from 'firebase/database';
-import type { Item, Items } from '../../client/types/index.js';
+import type {
+    CategoryMenuData,
+    MenuItemData,
+} from '../../client/types/index.js';
 import { database } from '../../config/firebaseConfig.js';
 
 /**
  * Returns an object with items sorted into the categories
  * @param kioskId The Kiosk ID
- * @returns Promise<Items | undefined>
+ * @returns Promise<CategoryMenuData | undefined>
  */
-async function getItems(kioskId: string): Promise<Items | undefined> {
+async function getItems(
+    kioskId: string
+): Promise<CategoryMenuData | undefined> {
     try {
         const dbRef = ref(database);
 
@@ -21,10 +26,10 @@ async function getItems(kioskId: string): Promise<Items | undefined> {
             return {};
         }
 
-        const items: Items = {};
+        const items: CategoryMenuData = {};
 
         // Iterate through the items object and categorize them
-        Object.values(databaseItems).forEach((item: Item) => {
+        Object.values(databaseItems).forEach((item: MenuItemData) => {
             const category = item.category;
 
             // If the category is not already a key in "items" add it
