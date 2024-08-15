@@ -2,6 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import * as functions from 'firebase-functions';
 import helmet from 'helmet';
+import ViteExpress from 'vite-express';
 import { getFileURL } from './firebase/getFileURL.js';
 import { getItems } from './firebase/getItems.js';
 import { verifyCode } from './firebase/verifyCode.js';
@@ -63,5 +64,12 @@ app.post('/api/verify-code', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+if (process.env.NODE_ENV === 'development') {
+    ViteExpress.config({ mode: 'development' });
+    ViteExpress.listen(app, 3000, () =>
+        console.log('Server is listening on port 3000...')
+    );
+}
 
 export { api, app };
