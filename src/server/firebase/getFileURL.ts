@@ -1,7 +1,5 @@
 import { getDownloadURL, ref } from 'firebase/storage';
-import { storage } from '../../config/firebaseConfig';
-
-console.log(await getFileURL('Muffin.webp'));
+import { storage } from '../../config/firebaseConfig.js';
 
 async function getFileURL(url: string): Promise<string> {
     try {
