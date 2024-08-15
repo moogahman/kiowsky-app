@@ -22,9 +22,11 @@ const Sidebar: React.FC = () => {
                     );
                 }
 
-                console.log('Fetched items:', fetchedItems);
+                const items = Object.entries(fetchedItems);
 
-                setItems(Object.entries(fetchedItems));
+                console.log(items);
+
+                setItems(items);
             } catch (error) {
                 console.error('Error fetching items:', error);
             }
@@ -59,14 +61,21 @@ const Sidebar: React.FC = () => {
                 <img src="https://via.placeholder.com/150" alt="profile" />
             </div>
             {items ? (
-                items.map((item, index) => (
-                    <Tab
-                        key={index}
-                        title={item[0]}
-                        //link={item[0]}
-                        // Icon={item[1].icon}
-                    />
-                ))
+                items.map((item, index) => {
+                    const link = item[0]
+                        .trim()
+                        .toLowerCase()
+                        .replace(/\s+/g, '');
+
+                    return (
+                        <Tab
+                            key={index}
+                            title={item[0]}
+                            link={link}
+                            // Icon={item[1].icon}
+                        />
+                    );
+                })
             ) : (
                 <p>Loading items...</p>
             )}
