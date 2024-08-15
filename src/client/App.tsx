@@ -1,13 +1,12 @@
-import React from 'react';
 // Using https://react-icons.github.io/react-icons
 import { Route, Routes } from 'react-router-dom';
-import ColdFood from './components/sidebar/coldFood/coldFood';
-import Drinks from './components/sidebar/drinks/drinks';
-import HotFood from './components/sidebar/hotFood/hotFood';
-import Snacks from './components/sidebar/snacks/snacks';
-
+import Detail from '../components/detail/detail';
 import './App.css';
-import Sidebar from './components/sidebar/sidebar';
+import ColdFood from './components/sidebar/coldFood/coldFood.jsx';
+import Drinks from './components/sidebar/drinks/drinks.jsx';
+import HotFood from './components/sidebar/hotFood/hotFood.jsx';
+import Sidebar from './components/sidebar/sidebar.jsx';
+import Snacks from './components/sidebar/snacks/snacks.jsx';
 
 function App() {
     return (
@@ -18,6 +17,7 @@ function App() {
                 <Route path="/hotfood" element={<HotFood />} />
                 <Route path="/coldfood" element={<ColdFood />} />
                 <Route path="/snacks" element={<Snacks />} />
+                <Route path="/detail" element={<Detail />} />
             </Routes>
         </div>
     );
