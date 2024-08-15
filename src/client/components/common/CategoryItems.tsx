@@ -1,6 +1,5 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
-import type { CategoryMenuData, MenuItemData } from '../../types';
+import type { MenuItemData } from '../../types';
 import { Item as ItemComponent } from '../items/item';
 
 interface CategoryItemsProps {
@@ -12,39 +11,13 @@ function CategoryItems({ category, className = 'main' }: CategoryItemsProps) {
     const [items, setItems] = useState<MenuItemData[] | null>(null);
 
     useEffect(() => {
-        async function fetchItems() {
-            // Check if items are in local storage
-            const cachedItems = localStorage.getItem(`${category}Items`);
+        const cachedItems = localStorage.getItem(`${category}Items`);
 
-            if (cachedItems) {
-                return setItems(JSON.parse(cachedItems));
-            }
-
-            try {
-                const response = await axios.get(
-                    'http://localhost:3000/api/items/nbcs'
-                );
-                const fetchedItems = response.data as CategoryMenuData;
-
-                if (!fetchedItems || !fetchedItems[category]) {
-                    return console.log(`No ${category} items found.`);
-                }
-
-                const categoryItems = fetchedItems[category];
-
-                setItems(categoryItems);
-
-                // Cache the item in local storage
-                localStorage.setItem(
-                    `${category}Items`,
-                    JSON.stringify(categoryItems)
-                );
-            } catch (error) {
-                console.error(`Error fetching ${category} items:`, error);
-            }
+        if (cachedItems) {
+            setItems(JSON.parse(cachedItems));
+        } else {
+            console.error(`No cached items found for ${category}`);
         }
-
-        fetchItems();
     }, [category]);
 
     return (
