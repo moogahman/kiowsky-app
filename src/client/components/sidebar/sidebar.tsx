@@ -11,6 +11,13 @@ const Sidebar: React.FC = () => {
 
     useEffect(() => {
         async function fetchItems() {
+            // Check if items are in local storage
+            const cachedItems = localStorage.getItem('sidebarItems');
+
+            if (cachedItems) {
+                return setItems(JSON.parse(cachedItems));
+            }
+
             try {
                 const response = await axios.get(
                     'http://localhost:3000/api/items/nbcs'
@@ -18,16 +25,16 @@ const Sidebar: React.FC = () => {
                 const fetchedItems = response.data as Items;
 
                 if (!fetchedItems) {
-                    return console.log(
-                        'No items found for the given kiosk ID.'
-                    );
+                    console.log('No items found for the given kiosk ID.');
+                    return;
                 }
 
                 const items = Object.entries(fetchedItems);
 
-                console.log(items);
-
                 setItems(items);
+
+                // Cache the items in local storage
+                localStorage.setItem('sidebarItems', JSON.stringify(items));
             } catch (error) {
                 console.error('Error fetching items:', error);
             }
