@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
-
 import type { MenuItemData } from '../../types';
 import { getCategoryIcon } from '../../utils';
 import './sidebar.css';
 import Tab from './tabs/tab';
 
 const Sidebar: React.FC = () => {
-    const [items, setItems] = useState<[string, MenuItemData[]][] | null>(null);
+    const [categories, setCategories] = useState<string[]>([]);
 
     useEffect(() => {
         const cachedItems = localStorage.getItem('sidebarItems');
         if (cachedItems) {
-            setItems(JSON.parse(cachedItems));
+            const items: [string, MenuItemData[]][] = JSON.parse(cachedItems);
+            const categoryNames = items.map(item => item[0]);
+            setCategories(categoryNames);
         } else {
             console.error('No cached sidebar items found');
         }
@@ -22,26 +23,26 @@ const Sidebar: React.FC = () => {
             <div>
                 <img src="https://via.placeholder.com/150" alt="profile" />
             </div>
-            {items ? (
-                items.map((item, index) => {
-                    const link = item[0]
+            {categories.length > 0 ? (
+                categories.map((category, index) => {
+                    const link = category
                         .trim()
                         .toLowerCase()
-                        .replace(/\s+/g, '');
+                        .replace(/\s+/g, '-');
 
-                    const icon = getCategoryIcon(item[0]);
+                    const icon = getCategoryIcon(category);
 
                     return (
                         <Tab
                             key={index}
-                            title={item[0]}
+                            title={category}
                             link={link}
                             Icon={icon}
                         />
                     );
                 })
             ) : (
-                <p>Loading items...</p>
+                <p>Loading categories...</p>
             )}
             <div>
                 <h4 className="powered-by">Powered by</h4>
