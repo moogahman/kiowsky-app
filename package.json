@@ -10,7 +10,7 @@
         "preview": "vite preview",
         "dev": "pnpm exec concurrently \"pnpm run dev:client\" \"pnpm run dev:server\"",
         "dev:client": "vite",
-        "dev:server": "nodemon -w src/server -x tsx src/server/main.ts",
+        "dev:server": "nodemon -w src/server -x NODE_ENV=development tsx src/server/index.ts",
         "lint": "pnpm exec eslint \"src/**/*.{ts,tsx}\"",
         "lint:fix": "pnpm exec eslint \"src/**/*.{ts,tsx}\" --fix",
         "format": "pnpm exec prettier src/**/* --write",
