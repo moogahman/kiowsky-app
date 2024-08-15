@@ -5,8 +5,6 @@ import type {
 } from '../../client/types/services/firebase/index.js';
 import { database } from '../../config/firebaseConfig.js';
 
-await getItems('nbcs');
-
 /**
  * Returns an object with items sorted into the categories
  * @param kioskId The Kiosk ID
