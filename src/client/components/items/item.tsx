@@ -1,10 +1,12 @@
 import type { MenuItemDisplayProps } from '../../types';
+import truncate from '../../utils/truncate';
 import './item.css';
 
 const defaultImage = './img/noImage.png';
 
 export function Item({ price, title, link, image }: MenuItemDisplayProps) {
     const displayImage = image || defaultImage;
+    const truncatedTitle = truncate(title, 17);
 
     return (
         <div
@@ -20,7 +22,7 @@ export function Item({ price, title, link, image }: MenuItemDisplayProps) {
                 />
             </div>
             <div className="text-container">
-                <a className="item-title">{title}</a>
+                <a className="item-title">{truncatedTitle}</a>
                 <h4 className="item-price">
                     AUD$ <span className="item-price-span">{price}</span>
                 </h4>
