@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import type { MenuItemData } from '../../../shared/types';
 import { getCategoryIcon } from '../../utils';
 import './sidebar.css';
-import Tab from './tabs/Tab';
+import Tab from './tabs/tab';
 
 const Sidebar: React.FC = () => {
     const [categories, setCategories] = useState<string[]>([]);
