@@ -1,7 +1,18 @@
 import type { IconType } from 'react-icons';
 import { BiSolidBowlHot } from 'react-icons/bi';
-import { FaBowlFood, FaCheese } from 'react-icons/fa6';
+import { FaBowlFood, FaCheese, FaPizzaSlice } from 'react-icons/fa6';
+import {
+    GiChickenOven,
+    GiChocolateBar,
+    GiFruitTree,
+    GiGingerbreadMan,
+    GiNoodles,
+} from 'react-icons/gi';
+import { IoFish } from 'react-icons/io5';
+import { LuSalad, LuSandwich, LuWheatOff } from 'react-icons/lu';
+import { MdSoupKitchen } from 'react-icons/md';
 import { RiDrinksFill } from 'react-icons/ri';
+import { TbMeat } from 'react-icons/tb';
 
 // Default category icons
 const defaultCategoryList: CategoryList = {
@@ -9,6 +20,18 @@ const defaultCategoryList: CategoryList = {
     'Hot Food': BiSolidBowlHot,
     Snacks: FaBowlFood,
     'Cold Food': FaCheese,
+    Vegetarian: GiFruitTree,
+    Desserts: GiChocolateBar,
+    Baked: GiGingerbreadMan,
+    Meat: TbMeat,
+    Chicken: GiChickenOven,
+    'Sea Food': IoFish,
+    Sandwiches: LuSandwich,
+    'Gluten Free': LuWheatOff,
+    Pasta: GiNoodles,
+    Salads: LuSalad,
+    Soup: MdSoupKitchen,
+    Pizza: FaPizzaSlice,
 };
 
 /**
