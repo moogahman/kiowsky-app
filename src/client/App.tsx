@@ -1,25 +1,22 @@
 // Using https://react-icons.github.io/react-icons
 import { Route, Routes } from 'react-router-dom';
-import Detail from '../components/detail/detail';
 import './App.css';
-import ColdFood from './components/sidebar/coldFood/coldFood.jsx';
-import Drinks from './components/sidebar/drinks/drinks.jsx';
-import HotFood from './components/sidebar/hotFood/hotFood.jsx';
-import Sidebar from './components/sidebar/sidebar.jsx';
-import Snacks from './components/sidebar/snacks/snacks.jsx';
+import AppLoader from './components/AppLoader';
+import DynamicCategory from './components/categories/DynamicCategory';
+import Detail from './components/detail/detail';
+import Sidebar from './components/sidebar/sidebar';
 
 function App() {
     return (
-        <div className="App">
-            <Sidebar />
-            <Routes>
-                <Route path="/drinks" element={<Drinks />} />
-                <Route path="/hotfood" element={<HotFood />} />
-                <Route path="/coldfood" element={<ColdFood />} />
-                <Route path="/snacks" element={<Snacks />} />
-                <Route path="/detail" element={<Detail />} />
-            </Routes>
-        </div>
+        <AppLoader>
+            <div className="App">
+                <Sidebar />
+                <Routes>
+                    <Route path="/detail" element={<Detail />} />
+                    <Route path="/:category" element={<DynamicCategory />} />
+                </Routes>
+            </div>
+        </AppLoader>
     );
 }
 

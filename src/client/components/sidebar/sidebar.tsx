@@ -1,40 +1,49 @@
-import { BiSolidBowlHot } from 'react-icons/bi';
-import { FaBowlFood, FaCheese } from 'react-icons/fa6';
-import { RiDrinksFill } from 'react-icons/ri';
-import { Link } from 'react-router-dom';
-
+import { useEffect, useState } from 'react';
+import type { MenuItemData } from '../../../shared/types';
+import { getCategoryIcon } from '../../utils';
 import './sidebar.css';
+import Tab from './tabs/tab';
 
-function Sidebar() {
+const Sidebar: React.FC = () => {
+    const [categories, setCategories] = useState<string[]>([]);
+
+    useEffect(() => {
+        const cachedItems = localStorage.getItem('sidebarItems');
+        if (cachedItems) {
+            const items: [string, MenuItemData[]][] = JSON.parse(cachedItems);
+            const categoryNames = items.map(item => item[0]);
+            setCategories(categoryNames);
+        } else {
+            console.error('No cached sidebar items found');
+        }
+    }, []);
+
     return (
         <div className="sidebar">
             <div>
                 <img src="https://via.placeholder.com/150" alt="profile" />
             </div>
-            <Link to="/drinks" className="link1">
-                <div>
-                    <RiDrinksFill className="icon" size={35} />
-                    <h1>Drinks</h1>
-                </div>
-            </Link>
-            <Link to="/hotfood" className="link2">
-                <div>
-                    <BiSolidBowlHot className="icon" size={35} />
-                    <h1>Hot Food</h1>
-                </div>
-            </Link>
-            <Link to="/snacks" className="link3">
-                <div>
-                    <FaBowlFood className="icon" size={35} />
-                    <h1>Snacks</h1>
-                </div>
-            </Link>
-            <Link to="/coldfood" className="link4">
-                <div>
-                    <FaCheese className="icon" size={35} />
-                    <h1>Cold Food</h1>
-                </div>
-            </Link>
+            {categories.length > 0 ? (
+                categories.map((category, index) => {
+                    const link = category
+                        .trim()
+                        .toLowerCase()
+                        .replace(/\s+/g, '-');
+
+                    const icon = getCategoryIcon(category);
+
+                    return (
+                        <Tab
+                            key={index}
+                            title={category}
+                            link={link}
+                            Icon={icon}
+                        />
+                    );
+                })
+            ) : (
+                <p>Loading categories...</p>
+            )}
             <div>
                 <h4 className="powered-by">Powered by</h4>
                 <img
@@ -45,6 +54,6 @@ function Sidebar() {
             </div>
         </div>
     );
-}
+};
 
 export default Sidebar;
