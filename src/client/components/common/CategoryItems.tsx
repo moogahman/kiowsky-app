@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { MenuItemData } from '../../../shared/types';
-import { Item as ItemComponent } from '../items/Item';
+import { Item as ItemComponent } from '../items/item';
+import './CategoryItems.css';
 
 interface CategoryItemsProps {
     category: string;
@@ -23,19 +24,21 @@ function CategoryItems({ category, className = 'main' }: CategoryItemsProps) {
     return (
         <div className={className}>
             <h1>{category}</h1>
-            {items ? (
-                items.map((item, index) => (
-                    <ItemComponent
-                        key={index}
-                        price={item.price}
-                        title={item.name}
-                        link="/detail"
-                        image={item.image}
-                    />
-                ))
-            ) : (
-                <p>Loading {category.toLowerCase()} items...</p>
-            )}
+            <div className="item-list">
+                {items ? (
+                    items.map((item, index) => (
+                        <ItemComponent
+                            key={index}
+                            price={item.price}
+                            title={item.name}
+                            link="/detail"
+                            image={item.image}
+                        />
+                    ))
+                ) : (
+                    <p>Loading {category.toLowerCase()} items...</p>
+                )}
+            </div>
         </div>
     );
 }
