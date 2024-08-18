@@ -1,11 +1,17 @@
 {
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
-		"outDir": "../../dist/server",
+		"outDir": "../../dist",
 		"noImplicitReturns": true,
 		"noUnusedLocals": true,
+		"paths": {
+			"@shared/*": [
+				"../shared/*"
+			]
+		}
 	},
 	"include": [
-		"**/*.ts"
+		"./**/*.ts",
+		"../shared/**/*.ts"
 	]
 }
