@@ -1,4 +1,5 @@
 import cors from 'cors';
+import 'dotenv/config';
 import express from 'express';
 import * as functions from 'firebase-functions';
 import helmet from 'helmet';
@@ -74,14 +75,12 @@ app.post('/verify-code', async (req, res) => {
     }
 });
 
-// if (process.env.NODE_ENV === 'development') {
-//     ViteExpress.config({ mode: 'development' });
-
-//     ViteExpress.listen(app, 3000, () =>
-//         console.log('Server is listening on port 3000...')
-//     );
-// }
-
 const api = functions.region('australia-southeast1').https.onRequest(app);
+
+if (process.env.NODE_ENV === 'development') {
+    const PORT = 5001;
+
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
 
 export { api, app };

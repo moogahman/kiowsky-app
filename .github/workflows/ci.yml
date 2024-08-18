@@ -5,7 +5,7 @@ on:
     pull_request:
 
 jobs:
-    tests:
+    client:
         runs-on: ubuntu-latest
 
         steps:
@@ -42,4 +42,46 @@ jobs:
             #       if-no-files-found: error
             #       retention-days: 30
             - name: Audit
+              run: pnpm audit --production
+
+    functions:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+            - name: Use Node.js 20
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: 'pnpm'
+            - name: Install dependencies
+              working-directory: functions
+              run: pnpm install
+            - name: Build
+              working-directory: functions
+              run: pnpm run build
+            - name: Upload build to GitHub Artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                  name: functions-build-report
+                  path: functions/lib/
+                  if-no-files-found: error
+                  retention-days: 1
+            - name: Lint
+              working-directory: functions
+              run: pnpm run lint
+            - name: Test
+              working-directory: functions
+              run: pnpm run test:coverage
+            - name: Upload test coverage to GitHub Artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                  name: functions-test-coverage-report
+                  path: functions/coverage/clover.xml
+                  if-no-files-found: error
+                  retention-days: 30
+            - name: Audit
+              working-directory: functions
               run: pnpm audit --production

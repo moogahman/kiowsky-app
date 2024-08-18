@@ -3,8 +3,13 @@
     "type": "module",
     "scripts": {
         "lint": "pnpm exec eslint \"src/**/*.ts\"",
+        "dev": "nodemon -w src -x NODE_ENV=development tsx src/index.ts",
         "build": "tsc",
         "build:watch": "tsc --watch",
+        "serve": "firebase emulators:start --only functions",
+        "shell": "firebase functions:shell",
+        "deploy": "firebase deploy --only functions",
+        "logs": "firebase functions:log",
         "test": "vitest",
         "test:coverage": "vitest run --coverage",
         "dotenv-vault": "pnpm dlx dotenv-vault@latest"
@@ -37,6 +42,8 @@
         "eslint-config-google": "^0.14.0",
         "eslint-plugin-import": "^2.29.1",
         "firebase-functions-test": "^3.3.0",
+        "firebase-tools": "^13.15.2",
+        "nodemon": "^3.1.4",
         "typescript": "^5.5.4",
         "typescript-eslint": "^8.1.0",
         "vitest": "^2.0.5"
