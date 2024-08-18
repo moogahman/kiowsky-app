@@ -4,16 +4,19 @@ import { useNavigate, useParams } from 'react-router-dom';
 import type { MenuItemData } from '../../../shared/types';
 import './detail.css';
 
+const defaultImage = '/img/noImage.png';
+
 function Detail() {
     const [quantity, setQuantity] = useState(1);
     const [item, setItem] = useState<MenuItemData | null>(null);
-
     const navigate = useNavigate();
 
     const { category, itemId } = useParams<{
         category: string;
         itemId: string;
     }>();
+
+    const displayImage = item?.image ? item?.image : defaultImage;
 
     useEffect(() => {
         if (!category || !itemId) return;
@@ -56,7 +59,11 @@ function Detail() {
                 onClick={handleClose}
             />
             <div className="img-main">
-                <img src={item.image} alt={item.name} className="detail-img" />
+                <img
+                    src={displayImage}
+                    alt={item.name}
+                    className="detail-img"
+                />
             </div>
             <div className="quantity-contain">
                 <div className="quantity-count">
