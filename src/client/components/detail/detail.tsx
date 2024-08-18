@@ -47,8 +47,9 @@ function Detail() {
 
     return (
         <div className="main-2">
-            <h1 className="title">{item.name}</h1>
-            <h3 className="price">AUD${item.price}</h3>
+            <h1 className="title">
+                {item.name} <h3 className="price">AUD${item.price}</h3>
+            </h1>
             <IoIosCloseCircle
                 size={37}
                 className="close-icon"
