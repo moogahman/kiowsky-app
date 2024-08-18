@@ -44,9 +44,6 @@ importers:
       react-router-dom:
         specifier: ^6.24.0
         version: 6.26.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      vite-express:
-        specifier: ^0.18.0
-        version: 0.18.0
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -2951,9 +2948,6 @@ packages:
   vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
-
-  vite-express@0.18.0:
-    resolution: {integrity: sha512-sdBVDbI/U5wVCFSW8S02uNdt9u6n8sChi4b9wkZMMtFBk7MESnB9rGnXDCmCxGuaG3vX9BjlrJDAcErnethOyw==}
 
   vite-node@1.6.0:
     resolution: {integrity: sha512-de6HJgzC+TFzOu0NTC4RAIsyf/DY/ibWDYQUcuEA84EMHhcefTUGkjFHKKEJhQN4A+6I0u++kr3l36ZF2d7XRw==}
@@ -6453,10 +6447,6 @@ snapshots:
     optional: true
 
   vary@1.1.2: {}
-
-  vite-express@0.18.0:
-    dependencies:
-      picocolors: 1.0.1
 
   vite-node@1.6.0(@types/node@20.14.15):
     dependencies:
