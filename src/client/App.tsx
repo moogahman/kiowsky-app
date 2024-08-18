@@ -12,7 +12,10 @@ function App() {
             <div className="App">
                 <Sidebar />
                 <Routes>
-                    <Route path="/detail" element={<Detail />} />
+                    <Route
+                        path="/detail/:category/:itemId"
+                        element={<Detail />}
+                    />
                     <Route path="/:category" element={<DynamicCategory />} />
                 </Routes>
             </div>
