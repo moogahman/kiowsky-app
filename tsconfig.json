@@ -23,8 +23,19 @@
 			"DOM",
 			"DOM.Iterable"
 		],
+		/* Paths */
+		"baseUrl": ".",
+		"paths": {
+			"@shared/*": [
+				"src/shared/*"
+			]
+		}
 	},
 	"include": [
-		"./src"
+		"src"
 	],
+	"exclude": [
+		"node_modules",
+		"dist"
+	]
 }

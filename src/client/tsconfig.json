@@ -3,16 +3,10 @@
 	"compilerOptions": {
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
-		"jsx": "react-jsx",
-		"paths": {
-			"@shared/*": [
-				"../shared/*"
-			]
-		}
+		"jsx": "react-jsx"
 	},
 	"include": [
 		"./**/*.ts",
-		"./**/*.tsx",
-		"../shared/**/*.ts"
+		"./**/*.tsx"
 	]
 }
