@@ -1,4 +1,4 @@
-import pluginJs from '@eslint/js/src/index.js';
+import js from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
@@ -13,7 +13,7 @@ export default [
     { languageOptions: { globals: globals.browser } },
     { plugins: { 'react-hooks': reactHooks, 'react-refresh': reactRefresh } },
     { settings: { react: { version: 'detect' } } },
-    pluginJs.configs.recommended,
+    ...js.configs.recommended,
     ...tseslint.configs.recommended,
     pluginReactConfig,
     eslintConfigPrettier,
