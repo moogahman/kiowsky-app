@@ -39,11 +39,9 @@ const defaultCategoryList: CategoryList = {
  * @param {string} category The name of the category
  * @returns {IconType} The corresponding icon component, or a default icon if not found
  */
-function getCategoryIcon(category: string): IconType {
+export function getCategoryIcon(category: string): IconType {
     return defaultCategoryList[category] || FaBowlFood;
 }
-
-export { getCategoryIcon };
 
 // Define structure for the category list
 interface CategoryList {
