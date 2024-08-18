@@ -33,6 +33,7 @@ function CategoryItems({ category, className = 'main' }: CategoryItemsProps) {
                             title={item.name}
                             link="/detail"
                             image={item.image}
+                            category={category}
                         />
                     ))
                 ) : (

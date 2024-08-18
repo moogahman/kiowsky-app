@@ -1,11 +1,33 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IoIosCloseCircle } from 'react-icons/io';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import type { MenuItemData } from '../../../shared/types';
 import './detail.css';
 
 function Detail() {
     const [quantity, setQuantity] = useState(1);
+    const [item, setItem] = useState<MenuItemData | null>(null);
+
     const navigate = useNavigate();
+
+    const { category, itemId } = useParams<{
+        category: string;
+        itemId: string;
+    }>();
+
+    useEffect(() => {
+        if (!category || !itemId) return;
+
+        const cachedItems = localStorage.getItem(`${category}Items`);
+        if (!cachedItems) return;
+
+        const items: MenuItemData[] = JSON.parse(cachedItems);
+
+        const selectedItem = items.find(item => item.name === itemId);
+        if (!selectedItem) return;
+
+        setItem(selectedItem);
+    }, [category, itemId]);
 
     const handleIncrement = () => {
         setQuantity(prevQuantity => prevQuantity + 1);
@@ -16,24 +38,24 @@ function Detail() {
     };
 
     const handleClose = () => {
-        navigate(-1); // Navigate back to the previous page
+        navigate(-1);
     };
+
+    if (!item) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="main-2">
-            <h1 className="title">Bagel</h1>
-            <h3 className="price">AUD$12</h3>
+            <h1 className="title">{item.name}</h1>
+            <h3 className="price">AUD${item.price}</h3>
             <IoIosCloseCircle
                 size={37}
                 className="close-icon"
                 onClick={handleClose}
             />
             <div className="img-main">
-                <img
-                    src="https://i0.wp.com/rqn.com.au/wp-content/uploads/2022/10/bagels.jpg?fit=600%2C600&ssl=1"
-                    alt="Bagel"
-                    className="detail-img"
-                />
+                <img src={item.image} alt={item.name} className="detail-img" />
             </div>
             <div className="quantity-contain">
                 <div className="quantity-count">

@@ -5,6 +5,7 @@ export interface MenuItemDisplayProps {
     title: string;
     link: string;
     image: string;
+    category: string;
 }
 
 export interface CategoryTabProps {
