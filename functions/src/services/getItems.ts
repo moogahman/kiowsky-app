@@ -4,10 +4,7 @@ import {
     getStorage,
     ref as storageRef,
 } from 'firebase/storage';
-import type {
-    CategoryMenuData,
-    MenuItemData,
-} from '../../../shared/types/index.js';
+import type { CategoryMenuData, MenuItemData } from '../../../types/index.js';
 import { database } from '../config/firebaseConfig.js';
 
 /**

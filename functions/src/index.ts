@@ -2,28 +2,19 @@ import cors from 'cors';
 import express from 'express';
 import * as functions from 'firebase-functions';
 import helmet from 'helmet';
-import { getFileURL } from './firebase/getFileURL.js';
-import { getItems } from './firebase/getItems.js';
-import { verifyCode } from './firebase/verifyCode.js';
+import { getFileURL } from './services/getFileURL.js';
+import { getItems } from './services/getItems.js';
+import { verifyCode } from './services/verifyCode.js';
 
 const app = express();
-const api = functions.https.onRequest(app);
 
 // Middleware
 app.use(helmet());
-app.use(
-    cors({
-        origin: [
-            'http://localhost:5173',
-            'https://kiowsky.firebaseapp.com/',
-            'https://kiowsky.web.app/',
-        ],
-    })
-);
+app.use(cors());
 app.use(express.json());
 
 // Routes
-app.get('/api/items/:kioskId', async (req, res) => {
+app.get('/items/:kioskId', async (req, res) => {
     try {
         const items = await getItems(req.params.kioskId);
 
@@ -37,7 +28,7 @@ app.get('/api/items/:kioskId', async (req, res) => {
     }
 });
 
-app.get('/api/file-url', async (req, res) => {
+app.get('/file-url', async (req, res) => {
     const { url } = req.query;
 
     if (typeof url !== 'string') {
@@ -57,7 +48,7 @@ app.get('/api/file-url', async (req, res) => {
     }
 });
 
-app.post('/api/verify-code', async (req, res) => {
+app.post('/verify-code', async (req, res) => {
     const { kioskId, code } = req.body;
 
     if (!kioskId || !code) {
@@ -80,5 +71,7 @@ app.post('/api/verify-code', async (req, res) => {
 //         console.log('Server is listening on port 3000...')
 //     );
 // }
+
+const api = functions.region('australia-southeast1').https.onRequest(app);
 
 export { api, app };

@@ -8,14 +8,14 @@ import { env } from './env.js';
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 const firebaseConfig: FirebaseOptions = {
-    apiKey: env.FIREBASE_API_KEY,
-    authDomain: env.FIREBASE_AUTH_DOMAIN,
-    projectId: env.FIREBASE_PROJECT_ID,
-    storageBucket: env.FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: env.FIREBASE_MESSAGING_SENDER_ID,
-    appId: env.FIREBASE_APP_ID,
-    measurementId: env.FIREBASE_MEASUREMENT_ID,
-    databaseURL: env.FIREBASE_DATABASE_URL,
+    apiKey: env.F_API_KEY,
+    authDomain: env.F_AUTH_DOMAIN,
+    projectId: env.F_PROJECT_ID,
+    storageBucket: env.F_STORAGE_BUCKET,
+    messagingSenderId: env.F_MESSAGING_SENDER_ID,
+    appId: env.F_APP_ID,
+    measurementId: env.F_MEASUREMENT_ID,
+    databaseURL: env.F_DATABASE_URL,
 };
 
 // Initialize Firebase

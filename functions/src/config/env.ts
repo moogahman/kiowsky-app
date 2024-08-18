@@ -8,14 +8,14 @@ export const env = createEnv({
         // Test
         HELLO: z.string().regex(/\bdevelopment\b/),
 
-        FIREBASE_API_KEY: z.string(),
-        FIREBASE_AUTH_DOMAIN: z.string(),
-        FIREBASE_PROJECT_ID: z.string(),
-        FIREBASE_STORAGE_BUCKET: z.string(),
-        FIREBASE_MESSAGING_SENDER_ID: z.string(),
-        FIREBASE_APP_ID: z.string(),
-        FIREBASE_MEASUREMENT_ID: z.string(),
-        FIREBASE_DATABASE_URL: z.string().url(),
+        F_API_KEY: z.string(),
+        F_AUTH_DOMAIN: z.string(),
+        F_PROJECT_ID: z.string(),
+        F_STORAGE_BUCKET: z.string(),
+        F_MESSAGING_SENDER_ID: z.string(),
+        F_APP_ID: z.string(),
+        F_MEASUREMENT_ID: z.string(),
+        F_DATABASE_URL: z.string().url(),
     },
 
     /**
