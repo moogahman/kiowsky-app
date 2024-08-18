@@ -4,9 +4,6 @@
 name: Deploy to Firebase Hosting on PR
 on:
     pull_request:
-    workflow_run:
-        workflows: ['Build, Test, and Lint']
-        types: [completed]
 permissions:
     checks: write
     contents: read
