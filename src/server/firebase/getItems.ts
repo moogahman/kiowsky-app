@@ -15,9 +15,7 @@ import { database } from '../config/firebaseConfig.js';
  * @param kioskId The Kiosk ID
  * @returns Promise<CategoryMenuData | undefined>
  */
-async function getItems(
-    kioskId: string
-): Promise<CategoryMenuData | undefined> {
+async function getItems(kioskId: string): Promise<CategoryMenuData> {
     try {
         const dbRef = ref(database);
         const storage = getStorage();
@@ -68,6 +66,7 @@ async function getItems(
         return items;
     } catch (error) {
         console.error('Error getting items:', error);
+        return {};
     }
 }
 
