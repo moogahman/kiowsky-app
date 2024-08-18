@@ -6,18 +6,23 @@
     "type": "module",
     "scripts": {
         "start": "pnpm run dev",
-        "build": "vite build",
         "preview": "vite preview",
+        "build": "pnpm run build:client && pnpm run build:server",
+        "build:client": "vite build --outDir ./dist/client",
+        "build:server": "tsc -p src/server/tsconfig.json",
         "dev": "pnpm exec concurrently \"pnpm run dev:client\" \"pnpm run dev:server\"",
         "dev:client": "vite",
         "dev:server": "nodemon -w src/server -x NODE_ENV=development tsx src/server/index.ts",
+        "serve": "npm run build:server && firebase emulators:start --only functions",
+        "shell": "npm run build:server && firebase functions:shell",
+        "deploy": "firebase deploy --only functions",
+        "logs": "firebase functions:log",
         "lint": "pnpm exec eslint \"src/**/*.{ts,tsx}\"",
         "lint:fix": "pnpm exec eslint \"src/**/*.{ts,tsx}\" --fix",
         "format": "pnpm exec prettier src/**/* --write",
         "test": "vitest",
         "test:coverage": "vitest run --coverage",
-        "dotenv-vault": "pnpm dlx dotenv-vault@latest",
-        "ts-node": "node --import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'"
+        "dotenv-vault": "pnpm dlx dotenv-vault@latest"
     },
     "keywords": [
         "mcdonalds",
