@@ -1,4 +1,4 @@
-import pluginJs from '@eslint/js';
+import pluginJs from '@eslint/js/src/index.js';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
