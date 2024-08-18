@@ -36,8 +36,8 @@ const defaultCategoryList: CategoryList = {
 
 /**
  * Retrieves the icon component for a given category
- * @param category The name of the category
- * @returns IconType The corresponding icon component, or a default icon if not found
+ * @param {string} category The name of the category
+ * @returns {IconType} The corresponding icon component, or a default icon if not found
  */
 function getCategoryIcon(category: string): IconType {
     return defaultCategoryList[category] || FaBowlFood;
