@@ -2,8 +2,10 @@
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
 		"outDir": "../../dist/server",
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
 	},
 	"include": [
-		"./**/*.ts"
+		"**/*.ts"
 	]
 }
