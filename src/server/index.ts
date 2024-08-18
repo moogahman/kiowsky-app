@@ -32,7 +32,7 @@ app.get('/api/items/:kioskId', async (req, res) => {
             return res.status(404).json({ error: 'Items not found' });
         }
 
-        res.json(items);
+        return res.json(items);
     } catch (error) {
         return res.status(500).json({ error: 'Internal server error' });
     }
@@ -52,9 +52,9 @@ app.get('/api/file-url', async (req, res) => {
             return res.status(404).json({ error: 'File URL not found' });
         }
 
-        res.json({ fileURL });
+        return res.json({ fileURL });
     } catch (error) {
-        res.status(500).json({ error: 'Internal server error' });
+        return res.status(500).json({ error: 'Internal server error' });
     }
 });
 
@@ -68,9 +68,9 @@ app.post('/api/verify-code', async (req, res) => {
     try {
         const isValid = await verifyCode(kioskId, code);
 
-        res.json({ isValid });
+        return res.json({ isValid });
     } catch (error) {
-        res.status(500).json({ error: 'Internal server error' });
+        return res.status(500).json({ error: 'Internal server error' });
     }
 });
 
