@@ -27,12 +27,13 @@
 		"baseUrl": ".",
 		"paths": {
 			"@shared/*": [
-				"src/shared/*"
+				"shared/*"
 			]
 		}
 	},
 	"include": [
-		"src"
+		"src",
+		"shared"
 	],
 	"exclude": [
 		"node_modules",
