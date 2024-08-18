@@ -1,13 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import type { MenuItemDisplayProps } from '../../types';
-import truncate from '../../utils/truncate';
+import { truncateText } from '../../utils';
 import './item.css';
 
 const defaultImage = './img/noImage.png';
 
 export function Item({ price, title, image, category }: MenuItemDisplayProps) {
     const displayImage = image || defaultImage;
-    const truncatedTitle = truncate(title, 17);
+    const truncatedTitle = truncateText(title, 17);
     const navigate = useNavigate();
 
     const handleClick = () => {
