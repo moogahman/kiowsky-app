@@ -6,9 +6,7 @@ on:
             - main
     pull_request:
         branches: [main]
-    workflow_run:
-        workflows: ['CI']
-        types: [completed]
+
 jobs:
     client:
         runs-on: ubuntu-latest
