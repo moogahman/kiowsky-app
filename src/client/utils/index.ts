@@ -1,3 +1,4 @@
 import { getCategoryIcon } from './getCategoryIcon';
+import { truncateText } from './truncate';
 
-export { getCategoryIcon };
+export { getCategoryIcon, truncateText };
