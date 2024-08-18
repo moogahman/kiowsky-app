@@ -14,11 +14,11 @@ function CategoryItems({ category, className = 'main' }: CategoryItemsProps) {
     useEffect(() => {
         const cachedItems = localStorage.getItem(`${category}Items`);
 
-        if (cachedItems) {
-            setItems(JSON.parse(cachedItems));
-        } else {
-            console.error(`No cached items found for ${category}`);
+        if (!cachedItems) {
+            throw new Error(`No cached items found for ${category}`);
         }
+
+        setItems(JSON.parse(cachedItems));
     }, [category]);
 
     return (

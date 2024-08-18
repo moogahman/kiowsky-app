@@ -9,12 +9,21 @@ const Sidebar: React.FC = () => {
 
     useEffect(() => {
         const cachedItems = localStorage.getItem('sidebarItems');
-        if (cachedItems) {
+
+        if (!cachedItems) {
+            console.error('No cached sidebar items found');
+            return setCategories([]);
+        }
+
+        try {
             const items: [string, MenuItemData[]][] = JSON.parse(cachedItems);
             const categoryNames = items.map(item => item[0]);
+
             setCategories(categoryNames);
-        } else {
-            console.error('No cached sidebar items found');
+        } catch (error) {
+            console.error('Error parsing cached sidebar items:', error);
+
+            setCategories([]);
         }
     }, []);
 
