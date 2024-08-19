@@ -9,7 +9,7 @@
     bottom: 10px;
     background-color: #5271ff;
     width: 70vw;
-    margin-left: 5vw;
+    margin-left: 25vw;
     text-align: center;
     border-radius: 10px;
     box-shadow: 3px 3px 10px rgb(209, 208, 208);
@@ -20,16 +20,16 @@
 }
 
 .img-main {
-    width: 100vw;
+    position: absolute;
+    top: 10vh;
+    right: 10vw;
     align-items: center;
     display: flex;
-    margin-top: 150px;
 }
 
 .detail-img {
     width: 25vw;
     object-fit: cover;
-    margin-left: 27.5vw;
     border-radius: 10px;
     box-shadow: 3px 3px 10px rgb(209, 208, 208);
 }
@@ -37,24 +37,22 @@
 .title {
     font-size: 60px;
     position: absolute;
-    top: 200px;
+    top: 10vh;
     left: 25vw;
+    max-width: 30vw;
 }
 
 .price {
     font-size: 20px;
-    position: absolute;
-    top: 320px;
-    left: 25vw;
     font-weight: 400;
 }
 
 .quantity-contain {
     position: absolute;
-    top: 340px;
-    right: 2vw;
-    display: flex;
-    align-items: center;
+    top: 80vh;
+    width: 80vw;
+    left: 20vw;
+    text-align: center;
 }
 
 .quantity-count {
@@ -62,12 +60,13 @@
     display: inline-flex;
     position: relative;
     bottom: 50px;
-    right: 120px;
 }
 
 .quantity-num {
     font-size: 20px;
     margin: -2px 10px;
+    height: 30px;
+    transform: translateY(50%);
 }
 
 .minus-btn {
@@ -75,11 +74,11 @@
     color: white;
     border: none;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
     position: relative;
-    right: 50px;
+    right: 150px;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -91,11 +90,11 @@
     color: white;
     border: none;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
     position: relative;
-    left: 50px;
+    left: 150px;
     align-items: center;
     justify-content: center;
     display: flex;

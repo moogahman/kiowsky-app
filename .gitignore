@@ -43,3 +43,9 @@ _node_modules
 *.njsproj
 *.sln
 *.sw?
+
+# TypeScript v1 declaration files
+typings/
+
+# Node.js dependency directory
+*.local
