@@ -13,7 +13,7 @@ export default [
     { languageOptions: { globals: globals.browser } },
     { plugins: { 'react-hooks': reactHooks, 'react-refresh': reactRefresh } },
     { settings: { react: { version: 'detect' } } },
-    ...js.configs.recommended,
+    js.configs.recommended,
     ...tseslint.configs.recommended,
     pluginReactConfig,
     eslintConfigPrettier,
