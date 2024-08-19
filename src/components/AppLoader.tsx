@@ -95,7 +95,9 @@ function AppLoader({ children }: AppLoaderProps) {
         return (
             <div className="loading-screen">
                 <h2>
-                    Loading assets ({progress}/{totalAssets})
+                    {progress === 0 && totalAssets === 0
+                        ? 'Loading assets'
+                        : `Loading assets (${progress}/${totalAssets})`}
                 </h2>
                 <progress value={progress} max={totalAssets}></progress>
             </div>
