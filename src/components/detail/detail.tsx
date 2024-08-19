@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { IoIosCloseCircle } from 'react-icons/io';
 import { useNavigate, useParams } from 'react-router-dom';
-import type { MenuItemData } from '../../../shared/types';
+import type { MenuItemData } from '../../../types';
 import './detail.css';
 
 const defaultImage = '/img/noImage.png';

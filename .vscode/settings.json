@@ -1,6 +1,7 @@
 {
 	"files.exclude": {
 		"node_modules/": true,
+		"functions/node_modules/": true
 	},
 	"editor.formatOnSave": true,
 	"editor.codeActionsOnSave": {

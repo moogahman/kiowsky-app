@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { MenuItemData } from '../../../shared/types';
+import type { MenuItemData } from '../../../types';
 import { getCategoryIcon } from '../../utils';
 import './sidebar.css';
 import Tab from './tabs/tab';

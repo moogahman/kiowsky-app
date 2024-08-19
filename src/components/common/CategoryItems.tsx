@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { MenuItemData } from '../../../shared/types';
+import type { MenuItemData } from '../../../types';
 import { Item as ItemComponent } from '../items/item';
 import './CategoryItems.css';
 

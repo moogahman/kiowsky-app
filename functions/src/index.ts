@@ -1,30 +1,31 @@
 import cors from 'cors';
+import 'dotenv/config';
 import express from 'express';
 import * as functions from 'firebase-functions';
 import helmet from 'helmet';
-import ViteExpress from 'vite-express';
-import { getFileURL } from './firebase/getFileURL.js';
-import { getItems } from './firebase/getItems.js';
-import { verifyCode } from './firebase/verifyCode.js';
+import { getFileURL } from './services/getFileURL.js';
+import { getItems } from './services/getItems.js';
+import { verifyCode } from './services/verifyCode.js';
 
 const app = express();
-const api = functions.https.onRequest(app);
 
 // Middleware
 app.use(helmet());
 app.use(
     cors({
         origin: [
+            'http://localhost:3000',
             'http://localhost:5173',
-            'https://kiowsky.firebaseapp.com/',
             'https://kiowsky.web.app/',
+            'https://kiowsky.firebaseapp.com/',
+            /^https:\/\/kiowsky--.*\.web\.app$/,
         ],
     })
 );
 app.use(express.json());
 
 // Routes
-app.get('/api/items/:kioskId', async (req, res) => {
+app.get('/items/:kioskId', async (req, res) => {
     try {
         const items = await getItems(req.params.kioskId);
 
@@ -32,13 +33,13 @@ app.get('/api/items/:kioskId', async (req, res) => {
             return res.status(404).json({ error: 'Items not found' });
         }
 
-        res.json(items);
+        return res.json(items);
     } catch (error) {
         return res.status(500).json({ error: 'Internal server error' });
     }
 });
 
-app.get('/api/file-url', async (req, res) => {
+app.get('/file-url', async (req, res) => {
     const { url } = req.query;
 
     if (typeof url !== 'string') {
@@ -52,13 +53,13 @@ app.get('/api/file-url', async (req, res) => {
             return res.status(404).json({ error: 'File URL not found' });
         }
 
-        res.json({ fileURL });
+        return res.json({ fileURL });
     } catch (error) {
-        res.status(500).json({ error: 'Internal server error' });
+        return res.status(500).json({ error: 'Internal server error' });
     }
 });
 
-app.post('/api/verify-code', async (req, res) => {
+app.post('/verify-code', async (req, res) => {
     const { kioskId, code } = req.body;
 
     if (!kioskId || !code) {
@@ -68,18 +69,18 @@ app.post('/api/verify-code', async (req, res) => {
     try {
         const isValid = await verifyCode(kioskId, code);
 
-        res.json({ isValid });
+        return res.json({ isValid });
     } catch (error) {
-        res.status(500).json({ error: 'Internal server error' });
+        return res.status(500).json({ error: 'Internal server error' });
     }
 });
 
-if (process.env.NODE_ENV === 'development') {
-    ViteExpress.config({ mode: 'development' });
+const api = functions.region('australia-southeast1').https.onRequest(app);
 
-    ViteExpress.listen(app, 3000, () =>
-        console.log('Server is listening on port 3000...')
-    );
+if (process.env.NODE_ENV === 'development') {
+    const PORT = 5001;
+
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 }
 
 export { api, app };

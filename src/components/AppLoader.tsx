@@ -1,11 +1,10 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
-import type { CategoryMenuData } from '../../shared/types';
+import type { CategoryMenuData } from '../../types';
 import './AppLoader.css';
 
-interface AppLoaderProps {
-    children: React.ReactNode;
-}
+const API_BASE_URL = import.meta.env.DEV
+    ? import.meta.env.VITE_LOCALHOST_API_BASE_URL
+    : import.meta.env.VITE_API_BASE_URL;
 
 function AppLoader({ children }: AppLoaderProps) {
     const [loading, setLoading] = useState(true);
@@ -15,11 +14,14 @@ function AppLoader({ children }: AppLoaderProps) {
     useEffect(() => {
         async function fetchAndCacheData() {
             try {
-                const response = await axios.get(
-                    'http://localhost:3000/api/items/nbcs'
-                );
+                const response = await fetch(`${API_BASE_URL}/items/nbcs`);
 
-                const fetchedItems = response.data as CategoryMenuData;
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const fetchedItems =
+                    (await response.json()) as CategoryMenuData;
 
                 if (!fetchedItems) {
                     console.log('No items found for the given kiosk ID.');
@@ -93,7 +95,9 @@ function AppLoader({ children }: AppLoaderProps) {
         return (
             <div className="loading-screen">
                 <h2>
-                    Loading assets ({progress}/{totalAssets})
+                    {progress === 0 && totalAssets === 0
+                        ? 'Loading assets'
+                        : `Loading assets (${progress}/${totalAssets})`}
                 </h2>
                 <progress value={progress} max={totalAssets}></progress>
             </div>
@@ -104,3 +108,7 @@ function AppLoader({ children }: AppLoaderProps) {
 }
 
 export default AppLoader;
+
+interface AppLoaderProps {
+    children: React.ReactNode;
+}
