@@ -10,6 +10,14 @@ function App() {
     return (
         <AppLoader>
             <div className="App">
+                <div className="price-container">
+                    <div className="pay-btn">
+                        <h1>Pay</h1>
+                    </div>
+                    <div className="price">
+                        <h1 className="price-text">$100</h1>
+                    </div>
+                </div>
                 <Sidebar />
                 <Routes>
                     <Route
