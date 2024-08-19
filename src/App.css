@@ -69,7 +69,7 @@
     color: black;
 }
 
-.price {
+.price-running {
     font-weight: 400;
     font-size: 13px;
     margin-left: 2vw;
@@ -77,4 +77,39 @@
 
 .price-text {
     color: black;
+}
+
+.cart-icon-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 1vw;
+    border-radius: 50%;
+    background-color: rgb(238, 238, 238);
+    box-shadow: 3px 3px 10px rgb(209, 208, 208);
+}
+
+.cart-icon {
+    color: black;
+    padding: 10px 10px 10px 10px;
+}
+
+.item-count-cart-icon-container {
+    position: absolute;
+    top: -10px;
+    right: 1px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-count-cart-icon {
+    background-color: red;
+    border-radius: 50%;
+    height: 17px;
+    width: 17px;
+    box-shadow: 3px 3px 10px rgb(105, 105, 105);
 }
