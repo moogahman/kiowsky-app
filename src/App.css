@@ -42,7 +42,7 @@
     position: fixed;
     bottom: 10px;
     right: 10px;
-    width: 20vw;
+    width: 335px;
     height: 70px;
     background-color: white;
     text-align: center;
@@ -65,14 +65,14 @@
     align-items: center;
     border-radius: 10px;
     font-size: 13px;
-    margin-left: 1vw;
+    margin-left: 16.78px;
     color: black;
 }
 
 .price-running {
     font-weight: 400;
-    font-size: 13px;
-    margin-left: 2vw;
+    font-size: 15px;
+    margin-left: 16.78px;
 }
 
 .price-text {
@@ -85,7 +85,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    left: 1vw;
+    left: 16.78px;
     border-radius: 50%;
     background-color: rgb(238, 238, 238);
     box-shadow: 3px 3px 10px rgb(209, 208, 208);
