@@ -13,13 +13,14 @@ const app = express();
 app.use(helmet());
 app.use(
     cors({
-        origin: [
-            'http://localhost:3000',
-            'http://localhost:5173',
-            'https://kiowsky.web.app',
-            'https://kiowsky.firebaseapp.com',
-            /^https:\/\/kiowsky--.*\.web\.app$/,
-        ],
+        // origin: [
+        //     'http://localhost:3000',
+        //     'http://localhost:5173',
+        //     'https://kiowsky.web.app',
+        //     'https://kiowsky.firebaseapp.com',
+        //     /^https:\/\/kiowsky--.*\.web\.app$/,
+        // ],
+        origin: '*',
     })
 );
 app.use(express.json());
