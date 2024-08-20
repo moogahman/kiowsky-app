@@ -1,11 +1,11 @@
-import js from '@eslint/js';
+import pluginJs from '@eslint/js';
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tseslintParser from '@typescript-eslint/parser';
 import importPlugin from 'eslint-plugin-import';
 import baseConfig from '../eslint.config.mjs';
 
 export default [
-    ...js.configs.recommended,
+    pluginJs.configs.recommended,
     ...baseConfig,
     {
         files: ['functions/**/*.{js,ts}'],
