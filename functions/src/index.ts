@@ -2,6 +2,8 @@ import cors from 'cors';
 import express from 'express';
 import * as functions from 'firebase-functions';
 import helmet from 'helmet';
+import { env } from './config/env.js';
+import { stripe } from './config/stripe.js';
 import { getFileURL } from './services/getFileURL.js';
 import { getItems } from './services/getItems.js';
 import { verifyCode } from './services/verifyCode.js';
@@ -73,6 +75,61 @@ app.post('/verify-code', async (req, res) => {
         return res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+app.post('/create-payment-intent', async (req, res) => {
+    const { amount, currency } = req.body;
+
+    try {
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount,
+            currency,
+        });
+
+        return res
+            .status(201)
+            .json({ clientSecret: paymentIntent.client_secret });
+    } catch (error) {
+        return res.status(500).json({ error: error });
+    }
+});
+
+// Handle stripe webhook events
+app.post(
+    '/webhook',
+    express.raw({ type: 'application/json' }),
+    async (req, res) => {
+        const sig = req.headers['stripe-signature'];
+
+        if (!sig) return console.log('Error getting stripe sig:', sig);
+
+        let event;
+
+        try {
+            event = stripe.webhooks.constructEvent(
+                req.body,
+                sig,
+                env.STRIPE_WEBHOOK_SECRET
+            );
+        } catch (error) {
+            console.error('Webhook error:', error);
+
+            return res.status(400).send(`Webhook error: ${error}`);
+        }
+
+        // Handle the event
+        switch (event.type) {
+            case 'payment_intent.succeeded':
+                const { object: paymentIntent } = event.data;
+
+                console.log('PaymentIntent was successful!', paymentIntent);
+                break;
+            default:
+                console.warn(`Unhandled event type ${event.type}`);
+        }
+
+        return res.json({ received: true });
+    }
+);
 
 const api = functions.region('australia-southeast1').https.onRequest(app);
 

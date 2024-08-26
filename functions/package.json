@@ -11,7 +11,8 @@
         "deploy": "firebase deploy --only functions",
         "logs": "firebase functions:log",
         "test": "vitest",
-        "test:coverage": "vitest run --coverage"
+        "test:coverage": "vitest run --coverage",
+        "dotenv-vault": "pnpm dlx dotenv-vault@latest"
     },
     "engines": {
         "node": "20"
