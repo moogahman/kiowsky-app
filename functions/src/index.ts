@@ -79,6 +79,14 @@ app.post('/verify-code', async (req, res) => {
 app.post('/create-payment-intent', async (req, res) => {
     const { amount, currency } = req.body;
 
+    if (!amount || !currency) {
+        console.error('Missing required parameters: amount and currency');
+
+        return res.status(400).json({
+            error: 'Missing required parameters: amount and currency',
+        });
+    }
+
     try {
         const paymentIntent = await stripe.paymentIntents.create({
             amount,
