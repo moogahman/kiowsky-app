@@ -1,4 +1,8 @@
-import 'dotenv/config';
+import { config } from 'dotenv';
+
+config({
+    path: '../../.env',
+});
 
 import { createEnv } from '@t3-oss/env-core';
 import { z } from 'zod';
@@ -16,6 +20,9 @@ export const env = createEnv({
         F_APP_ID: z.string(),
         F_MEASUREMENT_ID: z.string(),
         F_DATABASE_URL: z.string().url(),
+
+        STRIPE_SECRET_KEY: z.string(),
+        STRIPE_WEBHOOK_SECRET: z.string(),
     },
 
     /**
