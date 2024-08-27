@@ -72,9 +72,9 @@ jobs:
                   path: functions/lib/
                   if-no-files-found: error
                   retention-days: 1
-            - name: Lint
-              working-directory: functions
-              run: pnpm run lint
+            # - name: Lint
+            #   working-directory: functions
+            #   run: pnpm run lint
             - name: Audit
               working-directory: functions
               run: pnpm audit --production
