@@ -1,25 +1,55 @@
-import React from 'react';
 // Using https://react-icons.github.io/react-icons
+import { useState } from 'react';
+import { FaShoppingCart } from 'react-icons/fa';
 import { Route, Routes } from 'react-router-dom';
-import ColdFood from './components/sidebar/coldFood/coldFood';
-import Drinks from './components/sidebar/drinks/drinks';
-import HotFood from './components/sidebar/hotFood/hotFood';
-import Snacks from './components/sidebar/snacks/snacks';
-
 import './App.css';
+import AppLoader from './components/AppLoader';
+import Cart from './components/cart/cart';
+import DynamicCategory from './components/categories/DynamicCategory';
+import Detail from './components/detail/detail';
 import Sidebar from './components/sidebar/sidebar';
 
 function App() {
+    const [isCartVisible, setIsCartVisible] = useState(false);
+
+    const handlePriceContainerClick = () => {
+        setIsCartVisible(!isCartVisible);
+    };
+
+    const handleCloseCart = () => {
+        setIsCartVisible(false);
+    };
+
     return (
-        <div className="App">
-            <Sidebar />
-            <Routes>
-                <Route path="/drinks" element={<Drinks />} />
-                <Route path="/hotfood" element={<HotFood />} />
-                <Route path="/coldfood" element={<ColdFood />} />
-                <Route path="/snacks" element={<Snacks />} />
-            </Routes>
-        </div>
+        <AppLoader>
+            <div className="App">
+                <div
+                    className="price-container"
+                    onClick={handlePriceContainerClick}>
+                    <div className="pay-btn">
+                        <h1>Pay</h1>
+                    </div>
+                    <div className="price-running">
+                        <h1 className="price-text">$100.00</h1>
+                    </div>
+                    <div className="cart-icon-container">
+                        <FaShoppingCart size={30} className="cart-icon" />
+                        <div className="item-count-cart-icon-container">
+                            <h3 className="item-count-cart-icon">0</h3>
+                        </div>
+                    </div>
+                </div>
+                <Sidebar />
+                {isCartVisible && <Cart onClose={handleCloseCart} />}
+                <Routes>
+                    <Route
+                        path="/detail/:category/:itemId"
+                        element={<Detail />}
+                    />
+                    <Route path="/:category" element={<DynamicCategory />} />
+                </Routes>
+            </div>
+        </AppLoader>
     );
 }
 

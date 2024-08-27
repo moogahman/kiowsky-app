@@ -1,6 +1,7 @@
 {
 	"files.exclude": {
 		"node_modules/": true,
+		"functions/node_modules/": true
 	},
 	"editor.formatOnSave": true,
 	"editor.codeActionsOnSave": {
@@ -8,4 +9,5 @@
 		"source.organizeImports": "explicit"
 	},
 	"editor.insertSpaces": false,
+	"typescript.tsdk": "node_modules/typescript/lib",
 }

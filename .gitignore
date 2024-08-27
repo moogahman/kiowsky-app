@@ -1,6 +1,8 @@
 .env
 .DS_Store
 
+.firebase
+
 # Build
 dist
 *.tsbuildinfo
@@ -31,3 +33,21 @@ _node_modules
 .flaskenv*
 !.env.project
 !.env.vault
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# TypeScript v1 declaration files
+typings/
+
+# Node.js dependency directory
+*.local
