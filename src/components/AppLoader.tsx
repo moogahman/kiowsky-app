@@ -14,6 +14,7 @@ function AppLoader({ children }: AppLoaderProps) {
     useEffect(() => {
         async function fetchAndCacheData() {
             console.log('Environment:', process.env.NODE_ENV);
+            console.log('Life', import.meta.env.DEV);
             console.log('API_BASE_URL:', API_BASE_URL);
             console.log(
                 'LOCALHOST:',
