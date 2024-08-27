@@ -1,0 +1,19 @@
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    border-bottom: 1px solid rgb(183, 183, 183);
+}
+
+.cart-item img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.cart-item-price {
+    margin-right: 30px;
+}
