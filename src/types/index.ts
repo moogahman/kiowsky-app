@@ -13,3 +13,15 @@ export interface CategoryTabProps {
     link: string;
     Icon: IconType;
 }
+
+export interface CartItemProps {
+    imgLink: string;
+    imgAlt: string;
+    title: string;
+    quantity: number;
+    price: number;
+}
+
+export interface CartProps {
+    onClose: () => void;
+}
