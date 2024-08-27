@@ -13,15 +13,6 @@ function AppLoader({ children }: AppLoaderProps) {
 
     useEffect(() => {
         async function fetchAndCacheData() {
-            console.log('Environment:', process.env.NODE_ENV);
-            console.log('Life', import.meta.env.DEV);
-            console.log('API_BASE_URL:', API_BASE_URL);
-            console.log(
-                'LOCALHOST:',
-                import.meta.env.VITE_LOCALHOST_API_BASE_URL
-            );
-            console.log('API:', import.meta.env.VITE_API_BASE_URL);
-
             try {
                 const response = await fetch(`${API_BASE_URL}/items/nbcs`);
 
