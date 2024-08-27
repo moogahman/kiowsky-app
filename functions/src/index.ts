@@ -17,8 +17,10 @@ app.use(
             'http://localhost:3000',
             'http://localhost:5173',
             'https://kiowsky.web.app',
+            'https://kiowsky-kds.web.app/',
+            'https://kiowsky-kds.firebaseapp.com/',
             'https://kiowsky.firebaseapp.com',
-            /^https:\/\/kiowsky--.*\.web\.app$/,
+            /^https:\/\/kiowsky--[a-zA-Z0-9-]+\.web\.app$/,
         ],
     })
 );
