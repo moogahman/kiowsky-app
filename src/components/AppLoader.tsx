@@ -13,6 +13,7 @@ function AppLoader({ children }: AppLoaderProps) {
 
     useEffect(() => {
         async function fetchAndCacheData() {
+            console.log(API_BASE_URL);
             try {
                 const response = await fetch(`${API_BASE_URL}/items/nbcs`);
 
