@@ -1,17 +1,31 @@
 // Using https://react-icons.github.io/react-icons
+import { useState } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AppLoader from './components/AppLoader';
+import Cart from './components/cart/cart';
 import DynamicCategory from './components/categories/DynamicCategory';
 import Detail from './components/detail/detail';
 import Sidebar from './components/sidebar/sidebar';
 
 function App() {
+    const [isCartVisible, setIsCartVisible] = useState(false);
+
+    const handlePriceContainerClick = () => {
+        setIsCartVisible(!isCartVisible);
+    };
+
+    const handleCloseCart = () => {
+        setIsCartVisible(false);
+    };
+
     return (
         <AppLoader>
             <div className="App">
-                <div className="price-container">
+                <div
+                    className="price-container"
+                    onClick={handlePriceContainerClick}>
                     <div className="pay-btn">
                         <h1>Pay</h1>
                     </div>
@@ -26,6 +40,7 @@ function App() {
                     </div>
                 </div>
                 <Sidebar />
+                {isCartVisible && <Cart onClose={handleCloseCart} />}
                 <Routes>
                     <Route
                         path="/detail/:category/:itemId"
