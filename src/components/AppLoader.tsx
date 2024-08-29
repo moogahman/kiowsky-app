@@ -72,7 +72,7 @@ function AppLoader({ children }: AppLoaderProps) {
                 );
 
                 // Navigate to the first tab's route
-                if (categories.length > 0) {
+                if (categories.length > 0 && loading) {
                     const firstCategory = categories[0]
                         ?.trim()
                         ?.toLowerCase()

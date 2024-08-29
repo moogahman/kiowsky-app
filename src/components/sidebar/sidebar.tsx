@@ -6,6 +6,7 @@ import Tab from './tabs/tab';
 
 const Sidebar: React.FC = () => {
     const [categories, setCategories] = useState<string[]>([]);
+    const [selectedTab, setSelectedTab] = useState<string | null>(null);
 
     useEffect(() => {
         const cachedItems = localStorage.getItem('sidebarItems');
@@ -47,6 +48,8 @@ const Sidebar: React.FC = () => {
                             title={category}
                             link={link}
                             Icon={icon}
+                            isSelected={selectedTab === category}
+                            onClick={() => setSelectedTab(category)}
                         />
                     );
                 })
