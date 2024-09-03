@@ -128,11 +128,12 @@ app.post(
 
         // Handle the event
         switch (event.type) {
-            case 'payment_intent.succeeded':
+            case 'payment_intent.succeeded': {
                 const { object: paymentIntent } = event.data;
 
                 console.log('PaymentIntent was successful!', paymentIntent);
                 break;
+            }
             default:
                 console.warn(`Unhandled event type ${event.type}`);
         }
