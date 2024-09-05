@@ -48,8 +48,8 @@ const Sidebar: React.FC = () => {
                             title={category}
                             link={link}
                             Icon={icon}
-                            isSelected={selectedTab === category}
                             onClick={() => setSelectedTab(category)}
+                            isSelected={selectedTab === category}
                         />
                     );
                 })

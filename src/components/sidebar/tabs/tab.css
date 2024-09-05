@@ -2,8 +2,5 @@
     text-decoration: none;
     color: black;
 }
-
-.selected {
-    background-color: #d3d3d3; /* Highlight color */
-    font-weight: bold;
+.highlighted {
 }
