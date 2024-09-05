@@ -12,6 +12,8 @@ export interface CategoryTabProps {
     title: string;
     link: string;
     Icon: IconType;
+    isSelected: boolean;
+    onClick: () => void;
 }
 
 export interface CartItemProps {
