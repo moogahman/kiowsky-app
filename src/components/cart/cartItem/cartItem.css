@@ -12,6 +12,7 @@
     width: 200px;
     height: 200px;
     border-radius: 10px;
+    box-shadow: 3px 3px 10px rgb(209, 208, 208);
 }
 
 .cart-item-price {
