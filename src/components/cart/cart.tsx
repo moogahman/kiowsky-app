@@ -4,6 +4,8 @@ import type { CartProps } from '../../types';
 import './cart.css';
 import CartItem from './cartItem/cartItem';
 
+const defaultImage = '/img/noImage.png';
+
 function Cart({ onClose }: CartProps) {
     const { cartItems } = useCart();
 
@@ -22,7 +24,7 @@ function Cart({ onClose }: CartProps) {
                     {cartItems.map((item, index) => (
                         <CartItem
                             key={index}
-                            imgLink={item.image}
+                            imgLink={item.image || defaultImage}
                             imgAlt={`image of ${item.name}`}
                             title={item.name}
                             quantity={item.quantity || 0}
