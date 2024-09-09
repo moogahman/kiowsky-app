@@ -1,9 +1,12 @@
 import { IoIosCloseCircle } from 'react-icons/io';
+import { useCart } from '../../context/cartContext';
 import type { CartProps } from '../../types';
 import './cart.css';
 import CartItem from './cartItem/cartItem';
 
 function Cart({ onClose }: CartProps) {
+    const { cartItems } = useCart();
+
     return (
         <div className="cart-container">
             <div className="cart-container-actual">
@@ -16,41 +19,16 @@ function Cart({ onClose }: CartProps) {
                     onClick={onClose}
                 />
                 <div className="cart-items">
-                    <CartItem
-                        imgLink="https://sugargeekshow.com/wp-content/uploads/2019/10/chocolate-chip-muffins-featured.jpg"
-                        imgAlt="image of a muffin"
-                        title="Muffin"
-                        quantity={1}
-                        price={5.94}
-                    />
-                    <CartItem
-                        imgLink="https://sugargeekshow.com/wp-content/uploads/2019/10/chocolate-chip-muffins-featured.jpg"
-                        imgAlt="image of a muffin"
-                        title="Muffin"
-                        quantity={1}
-                        price={5.94}
-                    />
-                    <CartItem
-                        imgLink="https://sugargeekshow.com/wp-content/uploads/2019/10/chocolate-chip-muffins-featured.jpg"
-                        imgAlt="image of a muffin"
-                        title="Muffin"
-                        quantity={1}
-                        price={5.94}
-                    />
-                    <CartItem
-                        imgLink="https://sugargeekshow.com/wp-content/uploads/2019/10/chocolate-chip-muffins-featured.jpg"
-                        imgAlt="image of a muffin"
-                        title="Muffin"
-                        quantity={1}
-                        price={5.94}
-                    />
-                    <CartItem
-                        imgLink="https://sugargeekshow.com/wp-content/uploads/2019/10/chocolate-chip-muffins-featured.jpg"
-                        imgAlt="image of a muffin"
-                        title="Muffin"
-                        quantity={1}
-                        price={5.94}
-                    />
+                    {cartItems.map((item, index) => (
+                        <CartItem
+                            key={index}
+                            imgLink={item.image}
+                            imgAlt={`image of ${item.name}`}
+                            title={item.name}
+                            quantity={item.quantity || 0}
+                            price={item.price}
+                        />
+                    ))}
                 </div>
                 <div className="cart-total">
                     <h2>Total: $0.00</h2>
