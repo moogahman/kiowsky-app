@@ -27,28 +27,30 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             if (existingItem) {
                 return prevItems.map(i =>
                     i.name === item.name
-                        ? { ...i, quantity: (i.quantity || 0) + 1 }
+                        ? {
+                              ...i,
+                              quantity:
+                                  (i.quantity || 0) + (item.quantity || 1),
+                          }
                         : i
                 );
             }
-            return [...prevItems, { ...item, quantity: 1 }];
+            return [...prevItems, { ...item, quantity: item.quantity || 1 }];
         });
     };
 
-    const removeFromCart = (itemName: string) => {
-        setCartItems(prevItems =>
-            prevItems.filter(item => item.name !== itemName)
-        );
+    const removeFromCart = (itemId: string) => {
+        setCartItems(prevItems => prevItems.filter(item => item.id !== itemId));
     };
 
-    const updateItemQuantity = (itemName: string, quantity: number) => {
-        console.log(`Updating item ${itemName} to quantity ${quantity}`);
-        if (!itemName) {
-            console.error('itemName is undefined or null');
+    const updateItemQuantity = (itemId: string, quantity: number) => {
+        console.log(`Updating item ${itemId} to quantity ${quantity}`);
+        if (!itemId) {
+            console.error('itemId is undefined or null');
         }
         setCartItems(prevItems =>
             prevItems.map(item =>
-                item.name === itemName ? { ...item, quantity } : item
+                item.id === itemId ? { ...item, quantity } : item
             )
         );
     };
