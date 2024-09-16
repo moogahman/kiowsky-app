@@ -17,6 +17,7 @@ export interface CategoryTabProps {
 }
 
 export interface CartItemProps {
+    name: string;
     imgLink: string;
     imgAlt: string;
     title: string;

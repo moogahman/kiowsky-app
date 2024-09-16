@@ -4,6 +4,7 @@ export interface MenuItemData {
     price: number;
     image: string;
     quantity?: number;
+    id: string;
 }
 
 export interface CategoryMenuData {
