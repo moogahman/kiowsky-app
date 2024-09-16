@@ -39,18 +39,20 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         });
     };
 
-    const removeFromCart = (itemId: string) => {
-        setCartItems(prevItems => prevItems.filter(item => item.id !== itemId));
+    const removeFromCart = (itemName: string) => {
+        setCartItems(prevItems =>
+            prevItems.filter(item => item.name !== itemName)
+        );
     };
 
-    const updateItemQuantity = (itemId: string, quantity: number) => {
-        console.log(`Updating item ${itemId} to quantity ${quantity}`);
-        if (!itemId) {
-            console.error('itemId is undefined or null');
+    const updateItemQuantity = (itemName: string, quantity: number) => {
+        console.log(`Updating item ${itemName} to quantity ${quantity}`);
+        if (!itemName) {
+            console.error('itemName is undefined or null');
         }
         setCartItems(prevItems =>
             prevItems.map(item =>
-                item.id === itemId ? { ...item, quantity } : item
+                item.name === itemName ? { ...item, quantity } : item
             )
         );
     };

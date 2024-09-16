@@ -42,28 +42,3 @@
     font-size: 20px;
     margin: 0 10px;
 }
-
-.remove-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 12px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.remove-button:hover {
-    background-color: #ff3333;
-}
-
-.remove-button svg {
-    margin-right: 5px;
-}
-
-.remove-button span {
-    font-size: 14px;
-}
