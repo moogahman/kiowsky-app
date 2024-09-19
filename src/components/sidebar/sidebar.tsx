@@ -30,7 +30,7 @@ const Sidebar: React.FC = () => {
 
     return (
         <div className="sidebar">
-            <div>
+            <div className="sidebar-logo">
                 <img
                     className="caffee-logo"
                     src="/img/grounded-coffee-logo.png"

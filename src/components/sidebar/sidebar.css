@@ -53,8 +53,9 @@
     color: black;
 }
 .caffee-logo {
-    width: 300px;
-    max-width: 300px;
-    margin-right: 25px;
-    margin-top: 20px;
+    width: 270px;
+    max-width: 270px;
+}
+.sidebar-logo {
+    background-color: white;
 }
