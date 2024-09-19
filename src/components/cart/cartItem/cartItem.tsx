@@ -1,3 +1,4 @@
+import { FaTrash } from 'react-icons/fa';
 import { useCart } from '../../../context/cartContext';
 import type { CartItemProps } from '../../../types';
 import './cartItem.css';
@@ -38,7 +39,10 @@ function CartItem({
                 </button>
             </div>
             <h2 className="cart-item-price">${Number(price.toFixed(2))}</h2>
-            <button onClick={handleRemove}>Remove</button>
+            <button className="remove-button" onClick={handleRemove}>
+                <FaTrash />
+                <span>Remove</span>
+            </button>
         </div>
     );
 }
