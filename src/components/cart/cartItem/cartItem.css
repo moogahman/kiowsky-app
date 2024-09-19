@@ -12,8 +12,33 @@
     width: 200px;
     height: 200px;
     border-radius: 10px;
+    box-shadow: 3px 3px 10px rgb(209, 208, 208);
 }
 
 .cart-item-price {
     margin-right: 30px;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-controls button {
+    background-color: #5271ff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+}
+
+.quantity-controls span {
+    font-size: 20px;
+    margin: 0 10px;
 }
