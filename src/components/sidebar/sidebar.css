@@ -52,3 +52,10 @@
     text-decoration: none;
     color: black;
 }
+.caffee-logo {
+    width: 270px;
+    max-width: 270px;
+}
+.sidebar-logo {
+    background-color: white;
+}

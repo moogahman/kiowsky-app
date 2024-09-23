@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import type { CategoryMenuData } from '../../types';
 import './AppLoader.css';
 
@@ -10,6 +11,7 @@ function AppLoader({ children }: AppLoaderProps) {
     const [loading, setLoading] = useState(true);
     const [progress, setProgress] = useState(0);
     const [totalAssets, setTotalAssets] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchAndCacheData() {
@@ -69,6 +71,15 @@ function AppLoader({ children }: AppLoaderProps) {
                     JSON.stringify(Object.entries(fetchedItems))
                 );
 
+                // Navigate to the first tab's route
+                if (categories.length > 0 && loading) {
+                    const firstCategory = categories[0]
+                        ?.trim()
+                        ?.toLowerCase()
+                        ?.replace(/\s+/g, '-');
+                    navigate(`/${firstCategory}`);
+                }
+
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching and caching data:', error);
@@ -77,7 +88,7 @@ function AppLoader({ children }: AppLoaderProps) {
         }
 
         fetchAndCacheData();
-    }, []);
+    }, [navigate]);
 
     // Function to preload an image
     const preloadImage = (src: string): Promise<void> => {

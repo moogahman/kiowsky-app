@@ -6,6 +6,7 @@ import Tab from './tabs/tab';
 
 const Sidebar: React.FC = () => {
     const [categories, setCategories] = useState<string[]>([]);
+    const [selectedTab, setSelectedTab] = useState<string | null>(null);
 
     useEffect(() => {
         const cachedItems = localStorage.getItem('sidebarItems');
@@ -29,8 +30,12 @@ const Sidebar: React.FC = () => {
 
     return (
         <div className="sidebar">
-            <div>
-                <img src="https://via.placeholder.com/150" alt="profile" />
+            <div className="sidebar-logo">
+                <img
+                    className="caffee-logo"
+                    src="/img/grounded-coffee-logo.png"
+                    alt="profile"
+                />
             </div>
             {categories.length > 0 ? (
                 categories.map((category, index) => {
@@ -47,6 +52,8 @@ const Sidebar: React.FC = () => {
                             title={category}
                             link={link}
                             Icon={icon}
+                            onClick={() => setSelectedTab(category)}
+                            isSelected={selectedTab === category}
                         />
                     );
                 })

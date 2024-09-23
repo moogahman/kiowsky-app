@@ -27,6 +27,7 @@ export default [
             // Disable this rule because we are using the new JSX transform that was added to React 17
             'react/react-in-jsx-scope': 'off',
             'react/jsx-uses-react': 'off',
+            'react-hooks/exhaustive-deps': 'off',
         },
     },
 ];

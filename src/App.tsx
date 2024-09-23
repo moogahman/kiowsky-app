@@ -1,4 +1,3 @@
-// Using https://react-icons.github.io/react-icons
 import { useState } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { Route, Routes } from 'react-router-dom';
@@ -8,17 +7,24 @@ import Cart from './components/cart/cart';
 import DynamicCategory from './components/categories/DynamicCategory';
 import Detail from './components/detail/detail';
 import Sidebar from './components/sidebar/sidebar';
+import { useCart } from './context/cartContext';
 
 function App() {
     const [isCartVisible, setIsCartVisible] = useState(false);
+    const { cartItems } = useCart();
 
     const handlePriceContainerClick = () => {
-        setIsCartVisible(!isCartVisible);
+        setIsCartVisible(true);
     };
 
     const handleCloseCart = () => {
         setIsCartVisible(false);
     };
+
+    const totalItemsInCart = cartItems.reduce(
+        (total, item) => total + (item.quantity ?? 0),
+        0
+    );
 
     return (
         <AppLoader>
@@ -35,7 +41,9 @@ function App() {
                     <div className="cart-icon-container">
                         <FaShoppingCart size={30} className="cart-icon" />
                         <div className="item-count-cart-icon-container">
-                            <h3 className="item-count-cart-icon">0</h3>
+                            <h3 className="item-count-cart-icon">
+                                {totalItemsInCart}
+                            </h3>
                         </div>
                     </div>
                 </div>

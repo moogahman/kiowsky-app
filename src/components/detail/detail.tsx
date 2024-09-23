@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { IoIosCloseCircle } from 'react-icons/io';
 import { useNavigate, useParams } from 'react-router-dom';
 import type { MenuItemData } from '../../../types';
+import { useCart } from '../../context/cartContext'; // Import the cart context
 import './detail.css';
 
 const defaultImage = '/img/noImage.png';
@@ -10,6 +11,7 @@ function Detail() {
     const [quantity, setQuantity] = useState(1);
     const [item, setItem] = useState<MenuItemData | null>(null);
     const navigate = useNavigate();
+    const { addToCart } = useCart();
 
     const { category, itemId } = useParams<{
         category: string;
@@ -44,6 +46,12 @@ function Detail() {
         navigate(-1);
     };
 
+    const handleAddToCart = () => {
+        if (item) {
+            addToCart({ ...item, quantity });
+        }
+    };
+
     if (!item) {
         return <div>Loading...</div>;
     }
@@ -76,7 +84,7 @@ function Detail() {
                     </div>
                 </div>
             </div>
-            <div className="cart-btn">
+            <div className="cart-btn" onClick={handleAddToCart}>
                 <h1 className="cart-btn-txt">Add to cart</h1>
             </div>
         </div>
