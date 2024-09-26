@@ -38,6 +38,7 @@ app.get('/items/:kioskId', async (req, res) => {
 
         return res.json(items);
     } catch (error) {
+        console.error('Error fetching items:', error);
         return res.status(500).json({ error: 'Internal server error' });
     }
 });
@@ -46,7 +47,9 @@ app.get('/file-url', async (req, res) => {
     const { url } = req.query;
 
     if (typeof url !== 'string') {
-        return res.status(400).json({ error: 'URL parameter is required' });
+        return res
+            .status(400)
+            .json({ error: 'URL parameter is required and must be a string' });
     }
 
     try {
@@ -58,6 +61,7 @@ app.get('/file-url', async (req, res) => {
 
         return res.json({ fileURL });
     } catch (error) {
+        console.error('Error fetching file URL:', error);
         return res.status(500).json({ error: 'Internal server error' });
     }
 });
@@ -74,6 +78,7 @@ app.post('/verify-code', async (req, res) => {
 
         return res.json({ isValid });
     } catch (error) {
+        console.error('Error verifying code:', error);
         return res.status(500).json({ error: 'Internal server error' });
     }
 });
@@ -83,7 +88,6 @@ app.post('/create-payment-intent', async (req, res) => {
 
     if (!amount || !currency) {
         console.error('Missing required parameters: amount and currency');
-
         return res.status(400).json({
             error: 'Missing required parameters: amount and currency',
         });
@@ -95,22 +99,27 @@ app.post('/create-payment-intent', async (req, res) => {
             currency,
         });
 
-        return res
-            .status(201)
-            .json({ clientSecret: paymentIntent.client_secret });
+        return res.status(201).json(paymentIntent);
     } catch (error) {
-        return res.status(500).json({ error: error });
+        console.error('Error creating payment intent:', error);
+
+        return res
+            .status(500)
+            .json({ error: 'Failed to create payment intent' });
     }
 });
 
-// Handle stripe webhook events
+// Handle Stripe webhook events
 app.post(
     '/webhook',
     express.raw({ type: 'application/json' }),
     async (req, res) => {
         const sig = req.headers['stripe-signature'];
 
-        if (!sig) return console.log('Error getting stripe sig:', sig);
+        if (!sig) {
+            console.error('Missing Stripe signature');
+            return res.status(400).send('Missing Stripe signature');
+        }
 
         let event;
 
@@ -120,19 +129,27 @@ app.post(
                 sig,
                 env.STRIPE_WEBHOOK_SECRET
             );
-        } catch (error) {
-            console.error('Webhook error:', error);
-
-            return res.status(400).send(`Webhook error: ${error}`);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+            console.error(
+                'Webhook signature verification failed:',
+                error.message
+            );
+            return res
+                .status(400)
+                .send(
+                    `Webhook signature verification failed: ${error.message}`
+                );
         }
 
         // Handle the event
         switch (event.type) {
-            case 'payment_intent.succeeded':
-                const { object: paymentIntent } = event.data;
-
+            case 'payment_intent.succeeded': {
+                const paymentIntent = event.data.object;
                 console.log('PaymentIntent was successful!', paymentIntent);
+                // TODO: Implement post-payment fulfillment logic
                 break;
+            }
             default:
                 console.warn(`Unhandled event type ${event.type}`);
         }
