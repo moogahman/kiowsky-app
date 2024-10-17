@@ -97,7 +97,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
             console.log(data);
 
-            const clientSecret = data.clientSecret;
+            const clientSecret = data.client_secret;
 
             // Initialize Stripe.js
             const stripe: Stripe | null = await loadStripe(

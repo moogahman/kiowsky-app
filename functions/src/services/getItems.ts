@@ -47,10 +47,10 @@ async function getItems(kioskId: string): Promise<CategoryMenuData> {
                     );
                     typedItem.image = await getDownloadURL(imageRef);
                 } catch (error) {
-                    console.error(
-                        `Error fetching image for item ${itemId}:`,
-                        error
-                    );
+                    // console.error(
+                    //     `Error fetching image for item ${itemId}:`,
+                    //     error
+                    // );
                     typedItem.image = '';
                 }
             })();
