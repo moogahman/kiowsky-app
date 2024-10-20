@@ -37,9 +37,6 @@ function App() {
                     <div
                         className="price-container"
                         onClick={handlePriceContainerClick}>
-                        <div className="pay-btn">
-                            <h1>Pay</h1>
-                        </div>
                         <div className="price-running">
                             <h1 className="price-text">$100.00</h1>
                         </div>
