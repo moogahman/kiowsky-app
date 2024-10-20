@@ -6,14 +6,19 @@
     background-color: rgb(225, 225, 225);
     top: 0;
     left: 0;
+    box-shadow: 3px 3px 10px rgb(209, 208, 208);
+    margin-top: 5vh;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: scroll;
 }
 
 .sidebar div {
     height: 15vh;
-    background-color: rgb(225, 225, 225);
-    border-top-width: 3px;
+    background-color: rgb(255, 255, 255);
+    border-top-width: 1px;
     border-top-style: solid;
-    border-top-color: rgb(207, 207, 207);
+    border-top-color: rgba(207, 207, 207, 0.286);
     display: flex;
     justify-content: center;
     align-items: center;
