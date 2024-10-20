@@ -30,6 +30,11 @@ function App() {
         0
     );
 
+    const totalPrice = cartItems.reduce(
+        (total, item) => total + item.price * (item.quantity ?? 0),
+        0
+    );
+
     return (
         <AppLoader>
             <Elements stripe={stripePromise}>
@@ -38,7 +43,9 @@ function App() {
                         className="price-container"
                         onClick={handlePriceContainerClick}>
                         <div className="price-running">
-                            <h1 className="price-text">$100.00</h1>
+                            <h1 className="price-text">
+                                ${totalPrice.toFixed(2)}
+                            </h1>
                         </div>
                         <div className="cart-icon-container">
                             <FaShoppingCart size={30} className="cart-icon" />

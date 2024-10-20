@@ -42,7 +42,7 @@
     position: fixed;
     bottom: 10px;
     right: 10px;
-    width: 220px;
+    max-width: 220px;
     height: 70px;
     background-color: white;
     text-align: center;
@@ -75,6 +75,7 @@
     border-radius: 50%;
     background-color: rgb(238, 238, 238);
     box-shadow: 3px 3px 10px rgb(209, 208, 208);
+    margin-right: 33.56px;
 }
 
 .cart-icon {
