@@ -1,3 +1,5 @@
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import { useState } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { Route, Routes } from 'react-router-dom';
@@ -7,11 +9,15 @@ import Cart from './components/cart/cart';
 import DynamicCategory from './components/categories/DynamicCategory';
 import Detail from './components/detail/detail';
 import Sidebar from './components/sidebar/sidebar';
-import { useCart } from './context/cartContext';
+import StartScreen from './components/start/StartScreen';
+import { useCart } from './hooks/useCart';
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 function App() {
     const [isCartVisible, setIsCartVisible] = useState(false);
     const { cartItems } = useCart();
+    const [isStartScreenVisible, setIsStartScreenVisible] = useState(true);
 
     const handlePriceContainerClick = () => {
         setIsCartVisible(true);
@@ -26,37 +32,57 @@ function App() {
         0
     );
 
+    const totalPrice = cartItems.reduce(
+        (total, item) => total + item.price * (item.quantity ?? 0),
+        0
+    );
+
+    const handleStart = () => {
+        setIsStartScreenVisible(false);
+    };
+
     return (
         <AppLoader>
-            <div className="App">
-                <div
-                    className="price-container"
-                    onClick={handlePriceContainerClick}>
-                    <div className="pay-btn">
-                        <h1>Pay</h1>
-                    </div>
-                    <div className="price-running">
-                        <h1 className="price-text">$100.00</h1>
-                    </div>
-                    <div className="cart-icon-container">
-                        <FaShoppingCart size={30} className="cart-icon" />
-                        <div className="item-count-cart-icon-container">
-                            <h3 className="item-count-cart-icon">
-                                {totalItemsInCart}
-                            </h3>
+            <Elements stripe={stripePromise}>
+                {isStartScreenVisible ? (
+                    <StartScreen onStart={handleStart} />
+                ) : (
+                    <div className="App">
+                        <div
+                            className="price-container"
+                            onClick={handlePriceContainerClick}>
+                            <div className="price-running">
+                                <h1 className="price-text">
+                                    ${totalPrice.toFixed(2)}
+                                </h1>
+                            </div>
+                            <div className="cart-icon-container">
+                                <FaShoppingCart
+                                    size={30}
+                                    className="cart-icon"
+                                />
+                                <div className="item-count-cart-icon-container">
+                                    <h3 className="item-count-cart-icon">
+                                        {totalItemsInCart}
+                                    </h3>
+                                </div>
+                            </div>
                         </div>
+                        <Sidebar />
+                        {isCartVisible && <Cart onClose={handleCloseCart} />}
+                        <Routes>
+                            <Route
+                                path="/detail/:category/:itemId"
+                                element={<Detail />}
+                            />
+                            <Route
+                                path="/:category"
+                                element={<DynamicCategory />}
+                            />
+                        </Routes>
                     </div>
-                </div>
-                <Sidebar />
-                {isCartVisible && <Cart onClose={handleCloseCart} />}
-                <Routes>
-                    <Route
-                        path="/detail/:category/:itemId"
-                        element={<Detail />}
-                    />
-                    <Route path="/:category" element={<DynamicCategory />} />
-                </Routes>
-            </div>
+                )}
+            </Elements>
         </AppLoader>
     );
 }

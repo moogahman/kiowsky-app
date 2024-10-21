@@ -1,4 +1,4 @@
-import { useCart } from '../../../context/cartContext';
+import { useCart } from '../../../hooks/useCart';
 import type { CartItemProps } from '../../../types';
 import './cartItem.css';
 
@@ -38,7 +38,9 @@ function CartItem({
                 </button>
             </div>
             <h2 className="cart-item-price">${Number(price.toFixed(2))}</h2>
-            <button onClick={handleRemove}>Remove</button>
+            <button onClick={handleRemove} className="remove-btn">
+                Remove{' '}
+            </button>
         </div>
     );
 }

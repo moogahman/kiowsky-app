@@ -26,7 +26,8 @@ export function Item({ price, title, image, category }: MenuItemDisplayProps) {
             <div className="text-container">
                 <a className="item-title">{truncatedTitle}</a>
                 <h4 className="item-price">
-                    AUD$ <span className="item-price-span">{price}</span>
+                    ${' '}
+                    <span className="item-price-span">{price.toFixed(2)}</span>
                 </h4>
             </div>
         </div>

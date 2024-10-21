@@ -5,7 +5,7 @@ import {
     ref as storageRef,
 } from 'firebase/storage';
 import type { CategoryMenuData, MenuItemData } from '../../../types/index.js';
-import { database } from '../config/firebaseConfig.js';
+import { database } from '../config/firebase.js';
 
 /**
  * Returns an object with items sorted into the categories
@@ -47,10 +47,10 @@ async function getItems(kioskId: string): Promise<CategoryMenuData> {
                     );
                     typedItem.image = await getDownloadURL(imageRef);
                 } catch (error) {
-                    console.error(
-                        `Error fetching image for item ${itemId}:`,
-                        error
-                    );
+                    // console.error(
+                    //     `Error fetching image for item ${itemId}:`,
+                    //     error
+                    // );
                     typedItem.image = '';
                 }
             })();

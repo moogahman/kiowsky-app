@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { IoIosCloseCircle } from 'react-icons/io';
 import { useNavigate, useParams } from 'react-router-dom';
 import type { MenuItemData } from '../../../types';
-import { useCart } from '../../context/cartContext'; // Import the cart context
+import { useCart } from '../../hooks/useCart'; // Import the cart context
+import AddToCartAnimation from '../animations/AddToCartAnimation';
 import './detail.css';
 
 const defaultImage = '/img/noImage.png';
@@ -12,6 +13,8 @@ function Detail() {
     const [item, setItem] = useState<MenuItemData | null>(null);
     const navigate = useNavigate();
     const { addToCart } = useCart();
+    // Add state for animation visibility
+    const [isAnimationVisible, setIsAnimationVisible] = useState(false);
 
     const { category, itemId } = useParams<{
         category: string;
@@ -49,6 +52,8 @@ function Detail() {
     const handleAddToCart = () => {
         if (item) {
             addToCart({ ...item, quantity });
+            setIsAnimationVisible(true);
+            setTimeout(() => setIsAnimationVisible(false), 2000); // Hide after 2 seconds
         }
     };
 
@@ -87,6 +92,7 @@ function Detail() {
             <div className="cart-btn" onClick={handleAddToCart}>
                 <h1 className="cart-btn-txt">Add to cart</h1>
             </div>
+            <AddToCartAnimation isVisible={isAnimationVisible} />
         </div>
     );
 }

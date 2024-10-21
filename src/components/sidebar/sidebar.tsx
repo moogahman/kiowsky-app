@@ -30,13 +30,6 @@ const Sidebar: React.FC = () => {
 
     return (
         <div className="sidebar">
-            <div className="sidebar-logo">
-                <img
-                    className="caffee-logo"
-                    src="/img/grounded-coffee-logo.png"
-                    alt="profile"
-                />
-            </div>
             {categories.length > 0 ? (
                 categories.map((category, index) => {
                     const link = category
