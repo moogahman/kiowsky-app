@@ -9,6 +9,7 @@ const API_BASE_URL = import.meta.env.DEV
 
 interface CartContextType {
     cartItems: MenuItemData[];
+    setCartItems: React.Dispatch<React.SetStateAction<MenuItemData[]>>;
     addToCart: (item: MenuItemData) => void;
     removeFromCart: (itemId: string) => void;
     updateItemQuantity: (itemId: string, quantity: number) => void;
@@ -122,9 +123,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             // Checkout component.
 
             console.log('Payment Intent created:', clientSecret);
-
             // Clear the cart upon successful payment creation
             setCartItems([]);
+
+            // Clear local storage
+            localStorage.clear();
+            console.warn('Removed');
         } catch (error) {
             console.error('Checkout failed:', error);
         }
@@ -134,6 +138,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         <CartContext.Provider
             value={{
                 cartItems,
+                setCartItems,
                 addToCart,
                 removeFromCart,
                 updateItemQuantity,

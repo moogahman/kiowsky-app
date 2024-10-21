@@ -1,6 +1,6 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
@@ -16,7 +16,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 function App() {
     const [isCartVisible, setIsCartVisible] = useState(false);
-    const { cartItems } = useCart();
+    const { cartItems, setCartItems } = useCart();
     const [isStartScreenVisible, setIsStartScreenVisible] = useState(true);
 
     const handlePriceContainerClick = () => {
@@ -40,6 +40,37 @@ function App() {
     const handleStart = () => {
         setIsStartScreenVisible(false);
     };
+
+    const clearCart = () => {
+        setCartItems([]);
+        localStorage.removeItem('cartItems');
+    };
+
+    useEffect(() => {
+        let timeoutId: NodeJS.Timeout;
+
+        const resetTimeout = () => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                console.log('User logged out due to inactivity');
+                setIsStartScreenVisible(true);
+                clearCart();
+            }, 30000); // 1 minute
+        };
+
+        const events = ['mousemove', 'keydown', 'touchstart'];
+
+        events.forEach(event => window.addEventListener(event, resetTimeout));
+
+        resetTimeout();
+
+        return () => {
+            clearTimeout(timeoutId);
+            events.forEach(event =>
+                window.removeEventListener(event, resetTimeout)
+            );
+        };
+    }, []);
 
     return (
         <AppLoader>
