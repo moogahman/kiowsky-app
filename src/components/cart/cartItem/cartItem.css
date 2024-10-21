@@ -42,3 +42,19 @@
     font-size: 20px;
     margin: 0 10px;
 }
+
+.remove-btn {
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    font-size: 15px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgb(209, 208, 208);
+    vertical-align: middle;
+}
+
+.remove-icon {
+    vertical-align: middle;
+    color: white;
+}
